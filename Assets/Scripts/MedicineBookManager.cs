@@ -255,6 +255,8 @@ public class MedicineBookManager : MonoBehaviour
 
     // =========================
     // SYMPTOM BUTTONS
+    // CLICK ONCE = SELECT
+    // CLICK AGAIN = UNSELECT
     // =========================
 
     public void ToggleFever()
@@ -351,9 +353,7 @@ public class MedicineBookManager : MonoBehaviour
 
     void UpdateConditionHighlights()
     {
-        // -------------------------
         // RESET ALL CONDITIONS
-        // -------------------------
 
         if (feverMildPainConditionText != null)
             feverMildPainConditionText.color =
@@ -376,9 +376,7 @@ public class MedicineBookManager : MonoBehaviour
                 normalConditionColor;
 
 
-        // -------------------------
         // FEVER / MILD PAIN
-        // -------------------------
 
         if (feverSelected &&
             (bodyPainSelected || headacheSelected))
@@ -389,9 +387,7 @@ public class MedicineBookManager : MonoBehaviour
         }
 
 
-        // -------------------------
         // COLD
-        // -------------------------
 
         if (coldSelected ||
             (runnyNoseSelected &&
@@ -403,9 +399,7 @@ public class MedicineBookManager : MonoBehaviour
         }
 
 
-        // -------------------------
         // FLU
-        // -------------------------
 
         int fluSymptoms = 0;
 
@@ -427,10 +421,6 @@ public class MedicineBookManager : MonoBehaviour
         if (soreThroatSelected)
             fluSymptoms++;
 
-
-        // Highlight Flu when
-        // 2 or more Flu symptoms are selected
-
         if (fluSymptoms >= 2)
         {
             if (fluConditionText != null)
@@ -439,9 +429,7 @@ public class MedicineBookManager : MonoBehaviour
         }
 
 
-        // -------------------------
         // MIGRAINE
-        // -------------------------
 
         if (headacheSelected &&
             !feverSelected &&
@@ -454,9 +442,7 @@ public class MedicineBookManager : MonoBehaviour
         }
 
 
-        // -------------------------
         // INFECTION
-        // -------------------------
 
         int infectionSymptoms = 0;
 
@@ -468,7 +454,6 @@ public class MedicineBookManager : MonoBehaviour
 
         if (soreThroatSelected)
             infectionSymptoms++;
-
 
         if (infectionSymptoms >= 2)
         {
