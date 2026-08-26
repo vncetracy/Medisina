@@ -369,6 +369,25 @@ public class MixingManager : MonoBehaviour
         CheckMixButton();
     }
 
+    public void ReturnHeldCompound()
+    {
+        if (!isHoldingCompound)
+            return;
+
+        if (heldCompoundObject != null)
+            heldCompoundObject.SetActive(true);
+
+        heldCompoundObject = null;
+
+        heldCompound = "";
+
+        isHoldingCompound = false;
+
+        if (heldCompoundUI != null)
+            heldCompoundUI.SetActive(false);
+
+        Debug.Log("Compound returned to cabinet.");
+    }
 
     // =========================
     // CHECK MIX BUTTON

@@ -25,6 +25,12 @@ public class Day1Manager : MonoBehaviour
     public GameObject patientDialogueUI;
     public TextMeshProUGUI patientDialogueText;
 
+    [Header("Patient Animation")]
+    public Animator patientAnimator;
+
+    public float cureAnimationWaitTime = 2f;
+    public float deathAnimationWaitTime = 2f;
+
     [Header("Day UI")]
     public GameObject dayUI;
     public TextMeshProUGUI dayText;
@@ -160,6 +166,7 @@ public class Day1Manager : MonoBehaviour
         if (patientLifeUI != null)
             patientLifeUI.SetActive(false);
 
+        // Set the current patient's SICK sprite
         if (patientImage != null)
             patientImage.sprite = currentPatient.patientSprite;
 
@@ -176,6 +183,13 @@ public class Day1Manager : MonoBehaviour
 
         if (patientObject != null)
             patientObject.SetActive(true);
+
+        // Reset animation back to SickIdle
+        if (patientAnimator != null)
+        {
+            patientAnimator.Rebind();
+            patientAnimator.Update(0f);
+        }
 
         yield return new WaitForSeconds(1f);
 
@@ -306,6 +320,9 @@ public class Day1Manager : MonoBehaviour
         if (!patientAccepted)
             return;
 
+        if (patientIsLeaving)
+            return;
+
         if (mixingManager == null)
         {
             Debug.Log("MixingManager is not assigned.");
@@ -359,11 +376,28 @@ public class Day1Manager : MonoBehaviour
         else
         {
             Debug.Log("WRONG MEDICINE!");
+
+            mixingManager.RemoveHeldMedicine();
+
+            timerRunning = false;
+
+            if (timerUI != null)
+                timerUI.SetActive(false);
+
+            if (patientLifeUI != null)
+                patientLifeUI.SetActive(false);
+
+            StartCoroutine(WrongMedicineSequence());
         }
     }
 
     IEnumerator CorrectMedicineSequence()
     {
+        patientIsLeaving = true;
+
+        PatientData currentPatient =
+            shuffledPatients[currentPatientIndex];
+
         if (patientDialogueText != null)
             patientDialogueText.text =
                 "Thank you, doctor! I feel much better.";
@@ -371,7 +405,21 @@ public class Day1Manager : MonoBehaviour
         if (patientDialogueUI != null)
             patientDialogueUI.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
+        // Change to THIS patient's healthy sprite
+        if (patientImage != null &&
+            currentPatient.healthySprite != null)
+        {
+            patientImage.sprite =
+                currentPatient.healthySprite;
+        }
+
+        // Play Cure animation
+        if (patientAnimator != null)
+            patientAnimator.SetTrigger("Cure");
+
+        yield return new WaitForSeconds(
+            cureAnimationWaitTime
+        );
 
         if (patientObject != null)
             patientObject.SetActive(false);
@@ -382,6 +430,53 @@ public class Day1Manager : MonoBehaviour
         currentPatientIndex++;
 
         patientAccepted = false;
+        patientIsLeaving = false;
+
+        yield return new WaitForSeconds(1f);
+
+        ShowCurrentPatient();
+    }
+
+    IEnumerator WrongMedicineSequence()
+    {
+        patientIsLeaving = true;
+
+        PatientData currentPatient =
+            shuffledPatients[currentPatientIndex];
+
+        if (patientDialogueText != null)
+            patientDialogueText.text =
+                "Something... is wrong...";
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(true);
+
+        // Change to THIS patient's dead sprite
+        if (patientImage != null &&
+            currentPatient.deadSprite != null)
+        {
+            patientImage.sprite =
+                currentPatient.deadSprite;
+        }
+
+        // Play Death animation
+        if (patientAnimator != null)
+            patientAnimator.SetTrigger("Death");
+
+        yield return new WaitForSeconds(
+            deathAnimationWaitTime
+        );
+
+        if (patientObject != null)
+            patientObject.SetActive(false);
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
+
+        currentPatientIndex++;
+
+        patientAccepted = false;
+        patientIsLeaving = false;
 
         yield return new WaitForSeconds(1f);
 

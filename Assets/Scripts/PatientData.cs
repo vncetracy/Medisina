@@ -22,6 +22,10 @@ public class PatientData
     [Header("Patient Appearance")]
     public Sprite patientSprite;
 
+    public Sprite healthySprite;
+
+    public Sprite deadSprite;
+
     [Header("Patient Type")]
     public bool isFake;
 
