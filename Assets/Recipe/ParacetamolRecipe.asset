@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6593511e7497d8c498cb71e874b4e437, type: 3}
   m_Name: ParacetamolRecipe
   m_EditorClassIdentifier: Assembly-CSharp::MedicineRecipe
-  medicineName: 
-  ingredients: []
+  medicineName: Paracetamol
+  ingredients:
+  - compoundName: p-Aminophenol
+    requiredContainer: 1
+  - compoundName: Acetic Anhydride
+    requiredContainer: 0
