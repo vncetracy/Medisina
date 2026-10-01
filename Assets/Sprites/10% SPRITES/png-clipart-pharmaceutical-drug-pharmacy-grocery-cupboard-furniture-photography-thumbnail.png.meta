@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0afb1b828ae1721499ec96e8e18f8130
+guid: c9f67194a48a8f941a1d8e2ea02a1f2a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6819238529178870882
-    second: picture-piece-paper-with-clipboard-it_1271011-212-removebg-preview_0
+      213: 2914747553457479263
+    second: png-clipart-pharmaceutical-drug-pharmacy-grocery-cupboard-furniture-photography-thumbnail_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: picture-piece-paper-with-clipboard-it_1271011-212-removebg-preview_0
+      name: png-clipart-pharmaceutical-drug-pharmacy-grocery-cupboard-furniture-photography-thumbnail_0
       rect:
         serializedVersion: 2
-        x: 92
-        y: 35
-        width: 316
-        height: 448
+        x: 0
+        y: 0
+        width: 348
+        height: 646
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2642d5aff4dc2ae50800000000000000
-      internalID: 6819238529178870882
+      spriteID: f5e95c5f473437820800000000000000
+      internalID: 2914747553457479263
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      picture-piece-paper-with-clipboard-it_1271011-212-removebg-preview_0: 6819238529178870882
+      png-clipart-pharmaceutical-drug-pharmacy-grocery-cupboard-furniture-photography-thumbnail_0: 2914747553457479263
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

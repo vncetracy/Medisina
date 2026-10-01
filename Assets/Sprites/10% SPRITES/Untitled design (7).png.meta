@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e1f7435fa5649ad478e6e8fed2dad23e
+guid: 30e7dcb4d9e7248478f524806946e0b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7663171793206456177
-    second: medicine-bottle-in-pixel-art-style-vector-removebg-preview_0
+      213: 6742921083130950115
+    second: Untitled design (7)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: medicine-bottle-in-pixel-art-style-vector-removebg-preview_0
+      name: Untitled design (7)_0
       rect:
         serializedVersion: 2
-        x: 180
-        y: 127
-        width: 127
-        height: 232
+        x: 0
+        y: 0
+        width: 1920
+        height: 217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17f2dda052e095a60800000000000000
-      internalID: 7663171793206456177
+      spriteID: 3e13384effaa39d50800000000000000
+      internalID: 6742921083130950115
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      medicine-bottle-in-pixel-art-style-vector-removebg-preview_0: 7663171793206456177
+      Untitled design (7)_0: 6742921083130950115
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

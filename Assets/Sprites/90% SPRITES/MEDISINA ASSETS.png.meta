@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c9f67194a48a8f941a1d8e2ea02a1f2a
+guid: 7d755ad8355043943a7898d28e7dede0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2914747553457479263
-    second: png-clipart-pharmaceutical-drug-pharmacy-grocery-cupboard-furniture-photography-thumbnail_0
+      213: 264048821181600762
+    second: MEDISINA ASSETS_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: png-clipart-pharmaceutical-drug-pharmacy-grocery-cupboard-furniture-photography-thumbnail_0
+      name: MEDISINA ASSETS_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 348
-        height: 646
+        width: 6000
+        height: 3375
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5e95c5f473437820800000000000000
-      internalID: 2914747553457479263
+      spriteID: af3d3edf0071aa300800000000000000
+      internalID: 264048821181600762
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      png-clipart-pharmaceutical-drug-pharmacy-grocery-cupboard-furniture-photography-thumbnail_0: 2914747553457479263
+      MEDISINA ASSETS_0: 264048821181600762
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

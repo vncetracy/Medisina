@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9d224e8e8748f4b46bdb3d3afe2c14d5
+guid: c4bc5c806e7fedf48a1303d77c29d223
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6541711518715014202
-    second: green-button-icon-png-13_0
+      213: 2632915574304639518
+    second: pngtree-empty-flask-a-clear-beaker-with-the-word-chemistry-on-it-png-image_12544800-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: green-button-icon-png-13_0
+      name: pngtree-empty-flask-a-clear-beaker-with-the-word-chemistry-on-it-png-image_12544800-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 516
-        height: 516
+        x: 118
+        y: 33
+        width: 259
+        height: 404
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c319ef780c2735a0800000000000000
-      internalID: -6541711518715014202
+      spriteID: e1a850ad3cef98420800000000000000
+      internalID: 2632915574304639518
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      green-button-icon-png-13_0: -6541711518715014202
+      pngtree-empty-flask-a-clear-beaker-with-the-word-chemistry-on-it-png-image_12544800-removebg-preview_0: 2632915574304639518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

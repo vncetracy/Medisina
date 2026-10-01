@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bfacd71637a9af246931ea6e722f1e2d
+guid: d97d83240137c2149912d65e897f4663
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2840669254518327372
-    second: Untitled_design-removebg-preview_0
+      213: -351329617884133874
+    second: IMG_1872-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_design-removebg-preview_0
+      name: IMG_1872-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 25
+        x: 35
         y: 0
-        width: 445
-        height: 481
+        width: 363
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4840ffe2a51c6720800000000000000
-      internalID: 2840669254518327372
+      spriteID: e0641fee293df1bf0800000000000000
+      internalID: -351329617884133874
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Untitled_design-removebg-preview_0: 2840669254518327372
+      IMG_1872-removebg-preview_0: -351329617884133874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

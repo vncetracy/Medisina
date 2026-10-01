@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a148565a63db7214e818f8428d8f23e8
+guid: 673e9c2d9ffb7f14c99ea7e99e3e1444
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2787430150354066276
-    second: UVtF3D_0
+      213: -4934896638742635284
+    second: medication-vitamin-bottle-game-pixel-art-illustration-vector-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UVtF3D_0
+      name: medication-vitamin-bottle-game-pixel-art-illustration-vector-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 960
-        height: 400
+        x: 156
+        y: 83
+        width: 182
+        height: 334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c94aee3fb0f0159d0800000000000000
-      internalID: -2787430150354066276
+      spriteID: cecd97c37a9b38bb0800000000000000
+      internalID: -4934896638742635284
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UVtF3D_0: -2787430150354066276
+      medication-vitamin-bottle-game-pixel-art-illustration-vector-removebg-preview_0: -4934896638742635284
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

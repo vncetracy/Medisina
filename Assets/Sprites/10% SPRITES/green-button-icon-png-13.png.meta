@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e753e88a972128a468609c71d604a523
+guid: 9d224e8e8748f4b46bdb3d3afe2c14d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8289236907766387438
-    second: f78fc17e89cf02a07e4a357b9ced8f79_t-removebg-preview_0
+      213: -6541711518715014202
+    second: green-button-icon-png-13_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: f78fc17e89cf02a07e4a357b9ced8f79_t-removebg-preview_0
+      name: green-button-icon-png-13_0
       rect:
         serializedVersion: 2
-        x: 146
-        y: 34
-        width: 359
-        height: 280
+        x: 0
+        y: 0
+        width: 516
+        height: 516
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee21972ac09490370800000000000000
-      internalID: 8289236907766387438
+      spriteID: 6c319ef780c2735a0800000000000000
+      internalID: -6541711518715014202
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      f78fc17e89cf02a07e4a357b9ced8f79_t-removebg-preview_0: 8289236907766387438
+      green-button-icon-png-13_0: -6541711518715014202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
