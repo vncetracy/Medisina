@@ -1947,6 +1947,42 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 334548555}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[0]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[3]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[4]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[6]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[7]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 22407488, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 645.75
+      objectReference: {fileID: 0}
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2026,6 +2062,10 @@ PrefabInstance:
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22447500, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 645.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2778,6 +2818,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1032915655}
     m_Modifications:
+    - target: {fileID: 121608, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 180032, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Name
       value: Book
@@ -2786,6 +2830,42 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 334548555}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[0]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[3]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[4]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[6]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[7]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 22407488, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 645.75
+      objectReference: {fileID: 0}
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2865,6 +2945,10 @@ PrefabInstance:
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22447500, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 645.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16547,6 +16631,42 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 334548555}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[0]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[3]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[4]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[6]'
+      value: 
+      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: 'bookPages.Array.data[7]'
+      value: 
+      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+    - target: {fileID: 22407488, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 645.75
+      objectReference: {fileID: 0}
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16626,6 +16746,10 @@ PrefabInstance:
     - target: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22447500, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 645.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16923,7 +17047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2093811592
 RectTransform:
   m_ObjectHideFlags: 0
