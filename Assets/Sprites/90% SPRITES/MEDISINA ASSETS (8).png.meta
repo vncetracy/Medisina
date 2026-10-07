@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 73258493e0ea9f74ab29ff4674f2327e
+guid: 7913670d7bbfb7c4cbe736826ad847d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4073627359927300278
-    second: MEDISINA ASSETS (2)_0
+      213: 8607053344080687037
+    second: MEDISINA ASSETS (8)_0
   - first:
-      213: -2871154153974324800
-    second: MEDISINA ASSETS (2)_1
+      213: -5873374893305472974
+    second: MEDISINA ASSETS (8)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,12 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MEDISINA ASSETS (2)_0
+      name: MEDISINA ASSETS (8)_0
       rect:
         serializedVersion: 2
-        x: 171
+        x: 32
         y: 67
-        width: 193
+        width: 757
         height: 909
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b077c7308e688830800000000000000
-      internalID: 4073627359927300278
+      spriteID: dbf64c01a65627770800000000000000
+      internalID: 8607053344080687037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MEDISINA ASSETS (2)_1
+      name: MEDISINA ASSETS (8)_1
       rect:
         serializedVersion: 2
-        x: 1125
-        y: 211
-        width: 492
-        height: 697
+        x: 1564
+        y: 77
+        width: 184
+        height: 896
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c129fc428c9728d0800000000000000
-      internalID: -2871154153974324800
+      spriteID: 23854db27a49d7ea0800000000000000
+      internalID: -5873374893305472974
       vertices: []
       indices: 
       edges: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8242e01bd3b321a489363139b4b847ba
+    spriteID: 028a727637201734e9589684c90abaf9
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MEDISINA ASSETS (2)_0: 4073627359927300278
-      MEDISINA ASSETS (2)_1: -2871154153974324800
+      MEDISINA ASSETS (8)_0: 8607053344080687037
+      MEDISINA ASSETS (8)_1: -5873374893305472974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
