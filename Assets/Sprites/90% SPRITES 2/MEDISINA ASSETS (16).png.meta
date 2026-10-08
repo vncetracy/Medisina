@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: ed61f690c06572343842eab5664ab073
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4887283606877501797
+    second: MEDISINA ASSETS (16)_0
+  - first:
+      213: 3832579974969581596
+    second: MEDISINA ASSETS (16)_1
+  - first:
+      213: 7965458013632430277
+    second: MEDISINA ASSETS (16)_2
+  - first:
+      213: 1400230596814734082
+    second: MEDISINA ASSETS (16)_3
+  - first:
+      213: -7535254538430639945
+    second: MEDISINA ASSETS (16)_4
+  - first:
+      213: 3492599458629366140
+    second: MEDISINA ASSETS (16)_5
+  - first:
+      213: -3713467170035130437
+    second: MEDISINA ASSETS (16)_6
+  - first:
+      213: 6194187007745680291
+    second: MEDISINA ASSETS (16)_7
+  - first:
+      213: -590164782495836084
+    second: MEDISINA ASSETS (16)_8
+  - first:
+      213: 358981959712876300
+    second: MEDISINA ASSETS (16)_9
+  - first:
+      213: -6928673170751535922
+    second: MEDISINA ASSETS (16)_10
+  - first:
+      213: -8502147285056134842
+    second: MEDISINA ASSETS (16)_11
+  - first:
+      213: 8502043957947958961
+    second: MEDISINA ASSETS (16)_12
+  - first:
+      213: 8338213341219289649
+    second: MEDISINA ASSETS (16)_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_0
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 771
+        width: 557
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b960a771471ec2cb0800000000000000
+      internalID: -4887283606877501797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_1
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 773
+        width: 548
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c10665d6e2f003530800000000000000
+      internalID: 3832579974969581596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_2
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 760
+        width: 189
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c089df4cddfa8e60800000000000000
+      internalID: 7965458013632430277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_3
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 588
+        width: 556
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20386ce1f4e9e6310800000000000000
+      internalID: 1400230596814734082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_4
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 588
+        width: 549
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b011b8bbe56d6790800000000000000
+      internalID: -7535254538430639945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_5
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 546
+        width: 189
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71335af3b4387030800000000000000
+      internalID: 3492599458629366140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_6
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 397
+        width: 556
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbf1bfc984d177cc0800000000000000
+      internalID: -3713467170035130437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_7
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 396
+        width: 548
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3650de34c26f550800000000000000
+      internalID: 6194187007745680291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_8
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 330
+        width: 189
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c48d364d1405fc7f0800000000000000
+      internalID: -590164782495836084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_9
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 83
+        width: 219
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07a57db03c5bf400800000000000000
+      internalID: 358981959712876300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_10
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 83
+        width: 218
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4439cf57868df90800000000000000
+      internalID: -6928673170751535922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_11
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 83
+        width: 218
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6416d2e271e420a80800000000000000
+      internalID: -8502147285056134842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_12
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 110
+        width: 252
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b68e3a1fe35df570800000000000000
+      internalID: 8502043957947958961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MEDISINA ASSETS (16)_13
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 111
+        width: 237
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13a7cc82bd847b370800000000000000
+      internalID: 8338213341219289649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MEDISINA ASSETS (16)_0: -4887283606877501797
+      MEDISINA ASSETS (16)_1: 3832579974969581596
+      MEDISINA ASSETS (16)_10: -6928673170751535922
+      MEDISINA ASSETS (16)_11: -8502147285056134842
+      MEDISINA ASSETS (16)_12: 8502043957947958961
+      MEDISINA ASSETS (16)_13: 8338213341219289649
+      MEDISINA ASSETS (16)_2: 7965458013632430277
+      MEDISINA ASSETS (16)_3: 1400230596814734082
+      MEDISINA ASSETS (16)_4: -7535254538430639945
+      MEDISINA ASSETS (16)_5: 3492599458629366140
+      MEDISINA ASSETS (16)_6: -3713467170035130437
+      MEDISINA ASSETS (16)_7: 6194187007745680291
+      MEDISINA ASSETS (16)_8: -590164782495836084
+      MEDISINA ASSETS (16)_9: 358981959712876300
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
