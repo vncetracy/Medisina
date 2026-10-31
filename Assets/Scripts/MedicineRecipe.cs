@@ -26,4 +26,9 @@ public class MedicineRecipe : ScriptableObject
 
     [Header("Required Ingredients")]
     public List<RecipeIngredient> ingredients;
+
+    // NEW (optional): sprite shown on the result
+    // medicine after mixing this recipe.
+    [Header("Result (Optional)")]
+    public Sprite resultSprite;
 }

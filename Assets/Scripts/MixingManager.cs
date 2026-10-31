@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class MixingManager : MonoBehaviour
 {
@@ -81,6 +82,63 @@ public class MixingManager : MonoBehaviour
 
 
     // =========================
+    // ADDITIONAL COMPOUNDS
+    // =========================
+    // Every compound other than the two above.
+    // Fill this list in the Inspector. Add more
+    // entries later for new compounds.
+
+    [System.Serializable]
+    public class CompoundEntry
+    {
+        public string compoundName;
+        public GameObject cabinetObject;
+        public Sprite sprite;
+    }
+
+    [Header("Additional Compounds")]
+
+    public CompoundEntry[] additionalCompounds;
+
+
+    // =========================
+    // RECIPES
+    // =========================
+    // Uses the existing MedicineRecipe ScriptableObject.
+    //
+    // A recipe matches only when the filled DISHES contain
+    // exactly the recipe's Dish ingredients AND the filled
+    // FLASKS contain exactly its Flask ingredients.
+    // Reversed or extra ingredients do not match.
+    //
+    // To add a recipe: create a MedicineRecipe asset
+    // (Create > Medicine Game > Medicine Recipe) and add it
+    // to this list. No code change needed.
+
+    [Header("Recipes")]
+
+    public MedicineRecipe[] recipes;
+
+    // When true, built-in recipes (Paracetamol, Aspirin,
+    // Benzocaine, Amoxicillin, Clarithromycin) are added for
+    // any medicine name NOT already covered by an asset above.
+    public bool useBuiltInRecipes = true;
+
+    // The liquid used as the vehicle in the built-in
+    // Amoxicillin and Clarithromycin recipes.
+    public string liquidVehicleName = "Water";
+
+    // Optional sprite for the result of a wrong mixture.
+    public Sprite wrongMixtureSprite;
+
+    private List<MedicineRecipe> runtimeRecipes =
+        new List<MedicineRecipe>();
+
+    private Image resultMedicineImage;
+    private Sprite defaultResultSprite;
+
+
+    // =========================
     // MEDICINE
     // =========================
 
@@ -95,6 +153,23 @@ public class MixingManager : MonoBehaviour
 
     void Start()
     {
+        // =========================
+        // SAFE IMAGE ARRAYS
+        // =========================
+
+        flaskSlotImages =
+            EnsureImageArrayLength(
+                flaskSlotImages,
+                flaskSlots.Length
+            );
+
+        dishSlotImages =
+            EnsureImageArrayLength(
+                dishSlotImages,
+                dishSlots.Length
+            );
+
+
         // =========================
         // INITIALIZE FLASK SLOTS
         // =========================
@@ -144,6 +219,47 @@ public class MixingManager : MonoBehaviour
 
 
         // =========================
+        // CHECK IMAGE REFERENCES
+        // =========================
+
+        ValidateSlotImages(
+            flaskSlotImages,
+            flaskSlots,
+            "Flask"
+        );
+
+        ValidateSlotImages(
+            dishSlotImages,
+            dishSlots,
+            "Dish"
+        );
+
+
+        // =========================
+        // BUILD RECIPE LIST
+        // =========================
+
+        BuildRuntimeRecipes();
+
+
+        // =========================
+        // REMEMBER RESULT SPRITE
+        // =========================
+
+        if (resultMedicine != null)
+        {
+            resultMedicineImage =
+                resultMedicine.GetComponent<Image>();
+
+            if (resultMedicineImage != null)
+            {
+                defaultResultSprite =
+                    resultMedicineImage.sprite;
+            }
+        }
+
+
+        // =========================
         // HIDE HELD COMPOUND
         // =========================
 
@@ -180,6 +296,239 @@ public class MixingManager : MonoBehaviour
 
 
     // =========================
+    // BUILD RUNTIME RECIPES
+    // =========================
+    // 1) Recipe assets assigned in the Inspector.
+    // 2) Built-in recipes for medicines not covered by (1).
+
+    void BuildRuntimeRecipes()
+    {
+        runtimeRecipes.Clear();
+
+
+        if (recipes != null)
+        {
+            for (int i = 0; i < recipes.Length; i++)
+            {
+                if (recipes[i] != null)
+                    runtimeRecipes.Add(recipes[i]);
+            }
+        }
+
+
+        if (!useBuiltInRecipes)
+            return;
+
+
+        AddBuiltInRecipe(
+            "Paracetamol",
+            "p-Aminophenol",
+            "Acetic Anhydride"
+        );
+
+        AddBuiltInRecipe(
+            "Aspirin",
+            "Salicylic Acid",
+            "Acetic Anhydride"
+        );
+
+        AddBuiltInRecipe(
+            "Benzocaine",
+            "p-Aminobenzoic Acid",
+            "Ethanol"
+        );
+
+        AddBuiltInRecipe(
+            "Amoxicillin",
+            "Amoxicillin powder",
+            liquidVehicleName
+        );
+
+        AddBuiltInRecipe(
+            "Clarithromycin",
+            "Clarithromycin powder",
+            liquidVehicleName
+        );
+    }
+
+
+    void AddBuiltInRecipe(
+        string medicineName,
+        string dishCompound,
+        string flaskCompound)
+    {
+        // Skip if an Inspector asset already
+        // defines this medicine.
+
+        for (int i = 0; i < runtimeRecipes.Count; i++)
+        {
+            if (NamesMatch(
+                    runtimeRecipes[i].medicineName,
+                    medicineName))
+            {
+                return;
+            }
+        }
+
+
+        MedicineRecipe recipe =
+            ScriptableObject.CreateInstance<MedicineRecipe>();
+
+        recipe.name = medicineName + " (built-in)";
+
+        recipe.medicineName = medicineName;
+
+        recipe.ingredients =
+            new List<RecipeIngredient>
+            {
+                new RecipeIngredient
+                {
+                    compoundName = dishCompound,
+                    requiredContainer = ContainerType.Dish
+                },
+
+                new RecipeIngredient
+                {
+                    compoundName = flaskCompound,
+                    requiredContainer = ContainerType.Flask
+                }
+            };
+
+        runtimeRecipes.Add(recipe);
+    }
+
+
+    // =========================
+    // IMAGE HELPERS
+    // =========================
+
+    Image[] EnsureImageArrayLength(
+        Image[] source,
+        int length)
+    {
+        if (source != null &&
+            source.Length >= length)
+        {
+            return source;
+        }
+
+        Image[] result = new Image[length];
+
+        if (source != null)
+        {
+            for (int i = 0; i < source.Length; i++)
+                result[i] = source[i];
+        }
+
+        return result;
+    }
+
+
+    // Returns the Image for a slot.
+    // Valid Inspector assignments are never overwritten.
+    // If the reference is missing, falls back to the
+    // Image on that SAME slot GameObject (or its children).
+
+    Image ResolveSlotImage(
+        Image[] images,
+        GameObject[] slots,
+        int index,
+        string label)
+    {
+        if (images == null ||
+            slots == null ||
+            index < 0 ||
+            index >= images.Length ||
+            index >= slots.Length)
+        {
+            return null;
+        }
+
+        if (images[index] != null)
+            return images[index];
+
+        if (slots[index] == null)
+            return null;
+
+        Image found =
+            slots[index].GetComponent<Image>();
+
+        if (found == null)
+        {
+            found =
+                slots[index]
+                    .GetComponentInChildren<Image>(true);
+        }
+
+        if (found != null)
+        {
+            images[index] = found;
+
+            Debug.LogWarning(
+                label + "SlotImages[" + index +
+                "] was not assigned. Using the Image " +
+                "found on " + slots[index].name +
+                ". Please assign it in the Inspector."
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                label + "SlotImages[" + index +
+                "] is missing and " + slots[index].name +
+                " has no Image component."
+            );
+        }
+
+        return found;
+    }
+
+
+    // Warns (does not modify) if an assigned image
+    // is shared between slots or is not part of its slot.
+
+    void ValidateSlotImages(
+        Image[] images,
+        GameObject[] slots,
+        string label)
+    {
+        if (images == null || slots == null)
+            return;
+
+        for (int i = 0; i < images.Length; i++)
+        {
+            if (images[i] == null)
+                continue;
+
+            if (i < slots.Length &&
+                slots[i] != null &&
+                !images[i].transform.IsChildOf(
+                    slots[i].transform))
+            {
+                Debug.LogWarning(
+                    label + "SlotImages[" + i +
+                    "] is not on or under " +
+                    slots[i].name +
+                    ". Check the Inspector assignment."
+                );
+            }
+
+            for (int j = i + 1; j < images.Length; j++)
+            {
+                if (images[j] == images[i])
+                {
+                    Debug.LogWarning(
+                        label + "SlotImages[" + i +
+                        "] and [" + j +
+                        "] reference the same Image."
+                    );
+                }
+            }
+        }
+    }
+
+
+    // =========================
     // SELECT FLASK
     // =========================
 
@@ -205,12 +554,29 @@ public class MixingManager : MonoBehaviour
 
         if (flaskSlots[emptySlot] != null)
         {
+            // Make sure the new container
+            // starts empty.
+
+            flaskSlotFilled[emptySlot] = false;
+
+            flaskSlotCompounds[emptySlot] = "";
+
+
             flaskSlots[emptySlot].SetActive(true);
 
 
-            if (flaskSlotImages[emptySlot] != null)
+            Image flaskImage =
+                ResolveSlotImage(
+                    flaskSlotImages,
+                    flaskSlots,
+                    emptySlot,
+                    "Flask"
+                );
+
+
+            if (flaskImage != null)
             {
-                flaskSlotImages[emptySlot].sprite =
+                flaskImage.sprite =
                     emptyFlaskSprite;
             }
         }
@@ -243,12 +609,29 @@ public class MixingManager : MonoBehaviour
 
         if (dishSlots[emptySlot] != null)
         {
+            // Make sure the new container
+            // starts empty.
+
+            dishSlotFilled[emptySlot] = false;
+
+            dishSlotCompounds[emptySlot] = "";
+
+
             dishSlots[emptySlot].SetActive(true);
 
 
-            if (dishSlotImages[emptySlot] != null)
+            Image dishImage =
+                ResolveSlotImage(
+                    dishSlotImages,
+                    dishSlots,
+                    emptySlot,
+                    "Dish"
+                );
+
+
+            if (dishImage != null)
             {
-                dishSlotImages[emptySlot].sprite =
+                dishImage.sprite =
                     emptyDishSprite;
             }
         }
@@ -372,6 +755,126 @@ public class MixingManager : MonoBehaviour
 
 
     // =========================
+    // PICK ANY OTHER COMPOUND
+    // =========================
+    // Button OnClick can call either of these:
+    //   PickCompoundByIndex(int)   -> index in additionalCompounds
+    //   PickCompoundByName(string) -> compoundName
+
+    public void PickCompoundByIndex(int index)
+    {
+        if (isHoldingCompound)
+            return;
+
+        if (additionalCompounds == null ||
+            index < 0 ||
+            index >= additionalCompounds.Length)
+        {
+            Debug.LogWarning(
+                "PickCompoundByIndex: invalid index " +
+                index
+            );
+
+            return;
+        }
+
+        CompoundEntry entry =
+            additionalCompounds[index];
+
+        if (entry == null ||
+            string.IsNullOrEmpty(entry.compoundName))
+        {
+            Debug.LogWarning(
+                "PickCompoundByIndex: entry " + index +
+                " has no compoundName."
+            );
+
+            return;
+        }
+
+        PickCompoundInternal(
+            entry.compoundName,
+            entry.cabinetObject,
+            entry.sprite
+        );
+    }
+
+
+    public void PickCompoundByName(string compoundName)
+    {
+        if (isHoldingCompound)
+            return;
+
+        // Built-in compounds keep their original methods.
+
+        if (NamesMatch(compoundName, "p-Aminophenol"))
+        {
+            PickPAminophenol();
+            return;
+        }
+
+        if (NamesMatch(compoundName, "Acetic Anhydride"))
+        {
+            PickAceticAnhydride();
+            return;
+        }
+
+        if (additionalCompounds != null)
+        {
+            for (int i = 0;
+                 i < additionalCompounds.Length;
+                 i++)
+            {
+                if (additionalCompounds[i] != null &&
+                    NamesMatch(
+                        additionalCompounds[i].compoundName,
+                        compoundName))
+                {
+                    PickCompoundByIndex(i);
+                    return;
+                }
+            }
+        }
+
+        Debug.LogWarning(
+            "PickCompoundByName: unknown compound '" +
+            compoundName + "'."
+        );
+    }
+
+
+    void PickCompoundInternal(
+        string compoundName,
+        GameObject cabinetObject,
+        Sprite compoundSprite)
+    {
+        heldCompound =
+            compoundName;
+
+        heldCompoundObject =
+            cabinetObject;
+
+        isHoldingCompound = true;
+
+
+        if (cabinetObject != null)
+            cabinetObject.SetActive(false);
+
+
+        if (heldCompoundImage != null &&
+            compoundSprite != null)
+        {
+            heldCompoundImage.sprite =
+                compoundSprite;
+        }
+
+
+        if (heldCompoundUI != null)
+            heldCompoundUI.SetActive(true);
+    }
+
+
+    // =========================
     // PLACE IN FLASK
     // =========================
 
@@ -404,9 +907,21 @@ public class MixingManager : MonoBehaviour
             return;
 
 
-        if (flaskSlotImages[slotIndex] != null)
+        // Safe image lookup for the container
+        // that was actually clicked.
+
+        Image flaskImage =
+            ResolveSlotImage(
+                flaskSlotImages,
+                flaskSlots,
+                slotIndex,
+                "Flask"
+            );
+
+
+        if (flaskImage != null)
         {
-            flaskSlotImages[slotIndex].sprite =
+            flaskImage.sprite =
                 filledFlaskSprite;
         }
 
@@ -465,9 +980,21 @@ public class MixingManager : MonoBehaviour
             return;
 
 
-        if (dishSlotImages[slotIndex] != null)
+        // Safe image lookup for the container
+        // that was actually clicked.
+
+        Image dishImage =
+            ResolveSlotImage(
+                dishSlotImages,
+                dishSlots,
+                slotIndex,
+                "Dish"
+            );
+
+
+        if (dishImage != null)
         {
-            dishSlotImages[slotIndex].sprite =
+            dishImage.sprite =
                 filledDishSprite;
         }
 
@@ -583,22 +1110,34 @@ public class MixingManager : MonoBehaviour
 
 
         // =========================
-        // CHECK RECIPE FIRST
+        // CHECK RECIPES FIRST
         // =========================
+        // CHANGED: uses the MedicineRecipe list
+        // instead of the Paracetamol-only check.
 
-        bool correctRecipe =
-            IsCorrectParacetamolRecipe();
+        MedicineRecipe matchedRecipe =
+            FindMatchingRecipe();
+
+        Sprite resultSpriteToUse =
+            defaultResultSprite;
 
 
-        if (correctRecipe)
+        if (matchedRecipe != null)
         {
             heldMedicineName =
-                "Paracetamol";
+                matchedRecipe.medicineName;
+
+
+            if (matchedRecipe.resultSprite != null)
+            {
+                resultSpriteToUse =
+                    matchedRecipe.resultSprite;
+            }
 
 
             Debug.Log(
                 "CORRECT MIXTURE! " +
-                "PARACETAMOL"
+                heldMedicineName
             );
         }
         else
@@ -607,9 +1146,27 @@ public class MixingManager : MonoBehaviour
                 "Wrong Mixture";
 
 
+            if (wrongMixtureSprite != null)
+            {
+                resultSpriteToUse =
+                    wrongMixtureSprite;
+            }
+
+
             Debug.Log(
                 "WRONG MIXTURE!"
             );
+        }
+
+
+        // Update the result sprite (only if
+        // one is available).
+
+        if (resultMedicineImage != null &&
+            resultSpriteToUse != null)
+        {
+            resultMedicineImage.sprite =
+                resultSpriteToUse;
         }
 
 
@@ -688,8 +1245,178 @@ public class MixingManager : MonoBehaviour
 
 
     // =========================
+    // FIND MATCHING RECIPE
+    // =========================
+
+    MedicineRecipe FindMatchingRecipe()
+    {
+        List<string> dishContents =
+            CollectFilledCompounds(
+                dishSlotFilled,
+                dishSlotCompounds
+            );
+
+        List<string> flaskContents =
+            CollectFilledCompounds(
+                flaskSlotFilled,
+                flaskSlotCompounds
+            );
+
+
+        for (int r = 0; r < runtimeRecipes.Count; r++)
+        {
+            MedicineRecipe recipe = runtimeRecipes[r];
+
+            if (recipe == null ||
+                string.IsNullOrEmpty(recipe.medicineName) ||
+                recipe.ingredients == null ||
+                recipe.ingredients.Count == 0)
+            {
+                continue;
+            }
+
+
+            // Split the recipe by required container type.
+
+            List<string> requiredDish =
+                new List<string>();
+
+            List<string> requiredFlask =
+                new List<string>();
+
+
+            for (int i = 0;
+                 i < recipe.ingredients.Count;
+                 i++)
+            {
+                RecipeIngredient ingredient =
+                    recipe.ingredients[i];
+
+                if (ingredient == null ||
+                    string.IsNullOrEmpty(
+                        ingredient.compoundName))
+                {
+                    continue;
+                }
+
+                if (ingredient.requiredContainer ==
+                    ContainerType.Dish)
+                {
+                    requiredDish.Add(
+                        ingredient.compoundName);
+                }
+                else
+                {
+                    requiredFlask.Add(
+                        ingredient.compoundName);
+                }
+            }
+
+
+            if (requiredDish.Count == 0 &&
+                requiredFlask.Count == 0)
+            {
+                continue;
+            }
+
+
+            // Dish compounds must match dishes only,
+            // flask compounds must match flasks only.
+
+            if (SameCompounds(
+                    dishContents,
+                    requiredDish) &&
+                SameCompounds(
+                    flaskContents,
+                    requiredFlask))
+            {
+                return recipe;
+            }
+        }
+
+
+        return null;
+    }
+
+
+    List<string> CollectFilledCompounds(
+        bool[] filled,
+        string[] compounds)
+    {
+        List<string> result =
+            new List<string>();
+
+        if (filled == null || compounds == null)
+            return result;
+
+        for (int i = 0; i < filled.Length; i++)
+        {
+            if (filled[i] &&
+                !string.IsNullOrEmpty(compounds[i]))
+            {
+                result.Add(compounds[i]);
+            }
+        }
+
+        return result;
+    }
+
+
+    // True when both lists contain exactly the same
+    // compounds (any order, case-insensitive).
+
+    bool SameCompounds(
+        List<string> placed,
+        List<string> required)
+    {
+        if (placed.Count != required.Count)
+            return false;
+
+        List<string> remaining =
+            new List<string>(placed);
+
+        for (int i = 0; i < required.Count; i++)
+        {
+            int found = -1;
+
+            for (int j = 0; j < remaining.Count; j++)
+            {
+                if (NamesMatch(remaining[j], required[i]))
+                {
+                    found = j;
+                    break;
+                }
+            }
+
+            if (found == -1)
+                return false;
+
+            remaining.RemoveAt(found);
+        }
+
+        return remaining.Count == 0;
+    }
+
+
+    bool NamesMatch(string a, string b)
+    {
+        if (a == null || b == null)
+            return false;
+
+        return string.Equals(
+            a.Trim(),
+            b.Trim(),
+            System.StringComparison.OrdinalIgnoreCase
+        );
+    }
+
+
+    // =========================
     // CHECK PARACETAMOL RECIPE
     // =========================
+    // LEGACY: kept from the original script.
+    // MixCompounds() no longer calls it; the
+    // recipe list handles Paracetamol now.
 
     bool IsCorrectParacetamolRecipe()
     {
@@ -765,9 +1492,7 @@ public class MixingManager : MonoBehaviour
         // DO NOT set this to Paracetamol here.
         //
         // MixCompounds() already decided
-        // whether the result is:
-        //
-        // Paracetamol
+        // whether the result is a real medicine
         // OR
         // Wrong Mixture
 
