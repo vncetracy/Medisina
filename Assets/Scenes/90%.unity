@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5848195}
   - component: {fileID: 5848194}
   - component: {fileID: 5848193}
+  - component: {fileID: 5848196}
   m_Layer: 5
   m_Name: Ethanol
   m_TagString: Untagged
@@ -251,6 +252,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848191}
   m_CullTransparentMesh: 1
+--- !u!114 &5848196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &6764521
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +997,7 @@ GameObject:
   - component: {fileID: 115839331}
   - component: {fileID: 115839330}
   - component: {fileID: 115839329}
+  - component: {fileID: 115839332}
   m_Layer: 5
   m_Name: PAminobenzoicAcid
   m_TagString: Untagged
@@ -1102,6 +1118,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115839327}
   m_CullTransparentMesh: 1
+--- !u!114 &115839332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115839327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &138753751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1144,7 @@ GameObject:
   - component: {fileID: 138753755}
   - component: {fileID: 138753754}
   - component: {fileID: 138753753}
+  - component: {fileID: 138753756}
   m_Layer: 5
   m_Name: DishContainer
   m_TagString: Untagged
@@ -1234,6 +1265,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138753751}
   m_CullTransparentMesh: 1
+--- !u!114 &138753756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138753751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &142454134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,6 +1676,7 @@ GameObject:
   - component: {fileID: 160556353}
   - component: {fileID: 160556352}
   - component: {fileID: 160556351}
+  - component: {fileID: 160556355}
   m_Layer: 5
   m_Name: ClarithromycinPowder
   m_TagString: Untagged
@@ -1751,6 +1797,20 @@ RectTransform:
   m_AnchoredPosition: {x: -333, y: -187}
   m_SizeDelta: {x: 115.209, y: 154.754}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &160556355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160556350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &162322953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,14 +1834,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162322953}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 593878957}
   - {fileID: 406683444}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2207,6 +2267,7 @@ GameObject:
   - component: {fileID: 246580347}
   - component: {fileID: 246580346}
   - component: {fileID: 246580345}
+  - component: {fileID: 246580348}
   m_Layer: 5
   m_Name: MedicineCabinet
   m_TagString: Untagged
@@ -2327,6 +2388,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246580343}
   m_CullTransparentMesh: 1
+--- !u!114 &246580348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246580343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1001 &247307521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2343,6 +2418,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 334548555}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: -3586482730397537848, guid: 27c51ba7fb2f3224080be022d313a64f, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[0]'
       value: 
@@ -2605,6 +2684,101 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &257086312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257086313}
+  - component: {fileID: 257086316}
+  - component: {fileID: 257086315}
+  - component: {fileID: 257086314}
+  m_Layer: 5
+  m_Name: CustomCursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &257086313
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257086312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1791770229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &257086314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257086312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc197e905132fb74d8bc498631424f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomHandCursor
+  idleSprite: {fileID: -83619436601721761, guid: 05833c3f48397974d804f750c95bc2ca, type: 3}
+  clickSprite: {fileID: -5703400995838249085, guid: 05833c3f48397974d804f750c95bc2ca, type: 3}
+  holdSprite: {fileID: -8872617189235774285, guid: 05833c3f48397974d804f750c95bc2ca, type: 3}
+  hoverSprite: {fileID: -1518901861857753582, guid: 05833c3f48397974d804f750c95bc2ca, type: 3}
+  cursorOffset: {x: 25, y: -25}
+  clickDuration: 0.08
+  holdDelay: 0.08
+--- !u!114 &257086315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257086312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -83619436601721761, guid: 05833c3f48397974d804f750c95bc2ca, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &257086316
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257086312}
+  m_CullTransparentMesh: 1
 --- !u!1 &260415031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2617,6 +2791,7 @@ GameObject:
   - component: {fileID: 260415035}
   - component: {fileID: 260415034}
   - component: {fileID: 260415033}
+  - component: {fileID: 260415036}
   m_Layer: 5
   m_Name: Symptoms Book
   m_TagString: Untagged
@@ -2738,6 +2913,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260415031}
   m_CullTransparentMesh: 1
+--- !u!114 &260415036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260415031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &263119825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,6 +3071,7 @@ GameObject:
   - component: {fileID: 282703965}
   - component: {fileID: 282703964}
   - component: {fileID: 282703963}
+  - component: {fileID: 282703966}
   m_Layer: 5
   m_Name: Illness Book
   m_TagString: Untagged
@@ -3003,6 +3193,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282703961}
   m_CullTransparentMesh: 1
+--- !u!114 &282703966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282703961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &288836284
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,7 +3232,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288836284}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3036,7 +3240,7 @@ RectTransform:
   - {fileID: 1258557093}
   - {fileID: 142454135}
   - {fileID: 794837275}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3450,19 +3654,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1364102885}
-  - {fileID: 881804077}
-  - {fileID: 162322954}
-  - {fileID: 523145683}
-  - {fileID: 464927404}
-  - {fileID: 1149528868}
-  - {fileID: 1866997307}
-  - {fileID: 416254310}
-  - {fileID: 1377836207}
-  - {fileID: 288836285}
-  - {fileID: 1020473935}
-  - {fileID: 1535644474}
-  - {fileID: 1803146871}
+  - {fileID: 757601374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3486,30 +3678,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 180032, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 334548555}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 2603037134266798208, guid: 27c51ba7fb2f3224080be022d313a64f, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: bookPages.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[0]'
       value: 
-      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+      objectReference: {fileID: 1486727758008935118, guid: 0c28e29b1584d974e84849d43fde07e7, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[1]'
       value: 
-      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+      objectReference: {fileID: -4954097830070117823, guid: 0c28e29b1584d974e84849d43fde07e7, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[2]'
       value: 
-      objectReference: {fileID: 1756665372844000215, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+      objectReference: {fileID: -1921840733217517063, guid: 0c28e29b1584d974e84849d43fde07e7, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[3]'
       value: 
-      objectReference: {fileID: -967767271577073960, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+      objectReference: {fileID: -8107229550936539469, guid: ecf4550687c0d194db62a33034bdf5b2, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[4]'
       value: 
-      objectReference: {fileID: -2279292431940126497, guid: dc3cb4c6571d63241a5c0d18c32a4da8, type: 3}
+      objectReference: {fileID: 172931715062609696, guid: ecf4550687c0d194db62a33034bdf5b2, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[5]'
       value: 
@@ -3994,7 +4198,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416254309}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4002,7 +4206,7 @@ RectTransform:
   - {fileID: 1848934950}
   - {fileID: 1792356389}
   - {fileID: 1937491551}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4441,7 +4645,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4539,6 +4743,7 @@ GameObject:
   - component: {fileID: 478134562}
   - component: {fileID: 478134561}
   - component: {fileID: 478134564}
+  - component: {fileID: 478134565}
   m_Layer: 5
   m_Name: PAminophenol
   m_TagString: Untagged
@@ -4659,6 +4864,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &478134565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478134560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &486112821
 GameObject:
   m_ObjectHideFlags: 0
@@ -5485,7 +5704,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 290796296}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5949,6 +6168,7 @@ GameObject:
   - component: {fileID: 591893640}
   - component: {fileID: 591893639}
   - component: {fileID: 591893638}
+  - component: {fileID: 591893641}
   m_Layer: 5
   m_Name: PatientFile
   m_TagString: Untagged
@@ -6069,6 +6289,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591893636}
   m_CullTransparentMesh: 1
+--- !u!114 &591893641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591893636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &593878956
 GameObject:
   m_ObjectHideFlags: 0
@@ -7465,6 +7699,7 @@ GameObject:
   - component: {fileID: 744175550}
   - component: {fileID: 744175549}
   - component: {fileID: 744175551}
+  - component: {fileID: 744175552}
   m_Layer: 5
   m_Name: RejectButton
   m_TagString: Untagged
@@ -7585,6 +7820,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &744175552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744175547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &753447472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7722,6 +7971,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753447472}
   m_CullTransparentMesh: 1
+--- !u!1 &757601373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 757601374}
+  - component: {fileID: 757601375}
+  m_Layer: 5
+  m_Name: CameraSwayRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &757601374
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757601373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1364102885}
+  - {fileID: 881804077}
+  - {fileID: 162322954}
+  - {fileID: 523145683}
+  - {fileID: 464927404}
+  - {fileID: 1149528868}
+  - {fileID: 1866997307}
+  - {fileID: 416254310}
+  - {fileID: 1377836207}
+  - {fileID: 288836285}
+  - {fileID: 1020473935}
+  - {fileID: 1535644474}
+  - {fileID: 1803146871}
+  m_Father: {fileID: 334548556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &757601375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757601373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afe42ce422d35e4e92810cba924bbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIIdleSway
+  positionAmount: 2
+  positionSpeed: 0.4
+  rotationAmount: 0.12
+  rotationSpeed: 0.3
+  noiseAmount: 1.5
+  noiseSpeed: 0.4
 --- !u!1 &769575826
 GameObject:
   m_ObjectHideFlags: 0
@@ -8500,6 +8816,7 @@ GameObject:
   - component: {fileID: 808628818}
   - component: {fileID: 808628817}
   - component: {fileID: 808628816}
+  - component: {fileID: 808628819}
   m_Layer: 5
   m_Name: AmoxicillinPowder
   m_TagString: Untagged
@@ -8620,6 +8937,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808628814}
   m_CullTransparentMesh: 1
+--- !u!114 &808628819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808628814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &814564229
 GameObject:
   m_ObjectHideFlags: 0
@@ -8746,6 +9077,7 @@ GameObject:
   - component: {fileID: 823147093}
   - component: {fileID: 823147092}
   - component: {fileID: 823147091}
+  - component: {fileID: 823147094}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -8855,6 +9187,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823147089}
   m_CullTransparentMesh: 1
+--- !u!114 &823147094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823147089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &851732156
 GameObject:
   m_ObjectHideFlags: 0
@@ -9087,7 +9433,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881804076}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9095,7 +9441,7 @@ RectTransform:
   - {fileID: 2021386368}
   - {fileID: 475667521}
   - {fileID: 1859208209}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9945,6 +10291,7 @@ GameObject:
   - component: {fileID: 969686778}
   - component: {fileID: 969686777}
   - component: {fileID: 969686776}
+  - component: {fileID: 969686779}
   m_Layer: 5
   m_Name: AcceptButton
   m_TagString: Untagged
@@ -10065,6 +10412,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969686774}
   m_CullTransparentMesh: 1
+--- !u!114 &969686779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969686774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &974934335
 GameObject:
   m_ObjectHideFlags: 0
@@ -10544,7 +10905,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020473934}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10552,7 +10913,7 @@ RectTransform:
   - {fileID: 574369990}
   - {fileID: 627067732}
   - {fileID: 1167939234}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10609,7 +10970,7 @@ GameObject:
   - component: {fileID: 1032915657}
   - component: {fileID: 1032915656}
   m_Layer: 5
-  m_Name: ILLNESS/CURE BOOK
+  m_Name: SYMPTOMS BOOK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11123,7 +11484,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149528867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11133,7 +11494,7 @@ RectTransform:
   - {fileID: 324043746}
   - {fileID: 1617407020}
   - {fileID: 1872858022}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12193,6 +12554,7 @@ GameObject:
   - component: {fileID: 1282354748}
   - component: {fileID: 1282354747}
   - component: {fileID: 1282354746}
+  - component: {fileID: 1282354750}
   m_Layer: 5
   m_Name: SalicylicAcid
   m_TagString: Untagged
@@ -12313,6 +12675,20 @@ RectTransform:
   m_AnchoredPosition: {x: 316, y: 171.94}
   m_SizeDelta: {x: 115.209, y: 154.754}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1282354750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282354745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &1364102884
 GameObject:
   m_ObjectHideFlags: 0
@@ -12338,7 +12714,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364102884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12346,7 +12722,7 @@ RectTransform:
   - {fileID: 1639772721}
   - {fileID: 1482142659}
   - {fileID: 823147090}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -12559,7 +12935,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377836206}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12568,7 +12944,7 @@ RectTransform:
   - {fileID: 1372135387}
   - {fileID: 978536219}
   - {fileID: 1604343686}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13014,6 +13390,7 @@ GameObject:
   - component: {fileID: 1407782035}
   - component: {fileID: 1407782034}
   - component: {fileID: 1407782033}
+  - component: {fileID: 1407782036}
   m_Layer: 5
   m_Name: Water
   m_TagString: Untagged
@@ -13134,6 +13511,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407782031}
   m_CullTransparentMesh: 1
+--- !u!114 &1407782036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407782031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &1424294112
 GameObject:
   m_ObjectHideFlags: 0
@@ -13146,7 +13537,7 @@ GameObject:
   - component: {fileID: 1424294115}
   - component: {fileID: 1424294114}
   m_Layer: 5
-  m_Name: SYMPTOMS BOOK
+  m_Name: ILLNESS/CURE BOOK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13223,6 +13614,7 @@ GameObject:
   - component: {fileID: 1476727602}
   - component: {fileID: 1476727601}
   - component: {fileID: 1476727600}
+  - component: {fileID: 1476727603}
   m_Layer: 5
   m_Name: Recipe Book
   m_TagString: Untagged
@@ -13344,6 +13736,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476727598}
   m_CullTransparentMesh: 1
+--- !u!114 &1476727603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476727598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &1482142658
 GameObject:
   m_ObjectHideFlags: 0
@@ -13356,6 +13762,7 @@ GameObject:
   - component: {fileID: 1482142662}
   - component: {fileID: 1482142661}
   - component: {fileID: 1482142660}
+  - component: {fileID: 1482142663}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -13477,6 +13884,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482142658}
   m_CullTransparentMesh: 1
+--- !u!114 &1482142663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482142658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &1523147302
 GameObject:
   m_ObjectHideFlags: 0
@@ -13639,12 +14060,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535644473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13701,6 +14122,7 @@ GameObject:
   - component: {fileID: 1560000243}
   - component: {fileID: 1560000242}
   - component: {fileID: 1560000241}
+  - component: {fileID: 1560000244}
   m_Layer: 5
   m_Name: FlaskContainer
   m_TagString: Untagged
@@ -13821,6 +14243,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560000239}
   m_CullTransparentMesh: 1
+--- !u!114 &1560000244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560000239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &1564092529
 GameObject:
   m_ObjectHideFlags: 0
@@ -14727,6 +15163,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639772720}
   m_CullTransparentMesh: 1
+--- !u!1 &1704141559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704141561}
+  - component: {fileID: 1704141560}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1704141560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704141559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087f3a93908b8784a8fe0d92eb993968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  backgroundMusic: {fileID: 8300000, guid: 589068b9ddff8fb47959ccc894c54f6f, type: 3}
+  musicVolume: 0.5
+  sounds:
+  - soundName: Click
+    clip: {fileID: 8300000, guid: 22901f37bcddfab4baa7e8c8fe121bb4, type: 3}
+    volume: 0.5
+    loop: 0
+  - soundName: Hover
+    clip: {fileID: 8300000, guid: 9c025d62ebb861c458042b7d7c2c8085, type: 3}
+    volume: 0.5
+    loop: 0
+  - soundName: 
+    clip: {fileID: 0}
+    volume: 0
+    loop: 0
+--- !u!4 &1704141561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704141559}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1402.5032, y: 334.81573, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1736452939
 GameObject:
   m_ObjectHideFlags: 0
@@ -15265,6 +15760,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773065003}
   m_CullTransparentMesh: 1
+--- !u!1 &1791770225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1791770229}
+  - component: {fileID: 1791770228}
+  - component: {fileID: 1791770227}
+  - component: {fileID: 1791770226}
+  m_Layer: 5
+  m_Name: CursorCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1791770226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791770225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1791770227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791770225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1791770228
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791770225}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
+  m_TargetDisplay: 0
+--- !u!224 &1791770229
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791770225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 257086313}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1792356388
 GameObject:
   m_ObjectHideFlags: 0
@@ -15433,7 +16030,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803146870}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15442,7 +16039,7 @@ RectTransform:
   - {fileID: 1032915655}
   - {fileID: 2093811592}
   - {fileID: 1564092530}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16311,13 +16908,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866997306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1736452940}
-  m_Father: {fileID: 334548556}
+  m_Father: {fileID: 757601374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16563,6 +17160,7 @@ GameObject:
   - component: {fileID: 1898778366}
   - component: {fileID: 1898778365}
   - component: {fileID: 1898778364}
+  - component: {fileID: 1898778367}
   m_Layer: 5
   m_Name: BackToDeskArrow
   m_TagString: Untagged
@@ -16683,6 +17281,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898778362}
   m_CullTransparentMesh: 1
+--- !u!114 &1898778367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898778362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &1920951696
 GameObject:
   m_ObjectHideFlags: 0
@@ -17684,6 +18296,7 @@ GameObject:
   - component: {fileID: 2005065862}
   - component: {fileID: 2005065861}
   - component: {fileID: 2005065860}
+  - component: {fileID: 2005065863}
   m_Layer: 5
   m_Name: MedicineBook
   m_TagString: Untagged
@@ -17804,6 +18417,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005065858}
   m_CullTransparentMesh: 1
+--- !u!114 &2005065863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005065858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &2020033642
 GameObject:
   m_ObjectHideFlags: 0
@@ -18111,6 +18738,7 @@ GameObject:
   - component: {fileID: 2026846755}
   - component: {fileID: 2026846754}
   - component: {fileID: 2026846753}
+  - component: {fileID: 2026846756}
   m_Layer: 5
   m_Name: BackToDeskArrow
   m_TagString: Untagged
@@ -18231,6 +18859,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026846751}
   m_CullTransparentMesh: 1
+--- !u!114 &2026846756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026846751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &2029934977
 GameObject:
   m_ObjectHideFlags: 0
@@ -18388,6 +19030,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 334548555}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: -129212574103329691, guid: 27c51ba7fb2f3224080be022d313a64f, type: 3}
     - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: 'bookPages.Array.data[0]'
       value: 
@@ -18667,6 +19313,7 @@ GameObject:
   - component: {fileID: 2059630402}
   - component: {fileID: 2059630401}
   - component: {fileID: 2059630404}
+  - component: {fileID: 2059630405}
   m_Layer: 5
   m_Name: AceticAnhydride
   m_TagString: Untagged
@@ -18787,6 +19434,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2059630405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059630400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb405c2e89cb2d4d80c0d51197ee4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonSound
+  clickSound: Click
+  hoverSound: Hover
 --- !u!1 &2093811591
 GameObject:
   m_ObjectHideFlags: 0
@@ -19067,3 +19728,5 @@ SceneRoots:
   - {fileID: 769575829}
   - {fileID: 34712347}
   - {fileID: 516176893}
+  - {fileID: 1704141561}
+  - {fileID: 1791770229}
