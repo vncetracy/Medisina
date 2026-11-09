@@ -152,6 +152,8 @@ public GameObject patientLifeUI;
 
 public TextMeshProUGUI timerText;
 
+public TimePenaltyPopup penaltyPopup;
+
 public float startingTime = 60f;
 
 private float currentTime;
@@ -291,25 +293,67 @@ void Update()
     if (!timerRunning)
         return;
 
-
     currentTime -= Time.deltaTime;
 
+    if (currentTime <= 0f)
+        currentTime = 0f;
 
-    if (currentTime <= 0)
-    {
-        currentTime = 0;
+    UpdateTimerText();
 
-        timerRunning = false;
-
-        Debug.Log("TIME IS UP");
-    }
+    if (currentTime <= 0f)
+        HandleTimeUp();
+}
 
 
+void UpdateTimerText()
+{
     if (timerText != null)
+        timerText.text = Mathf.CeilToInt(currentTime).ToString();
+}
+
+
+public void PenalizeTime(float seconds)
+{
+    if (!timerRunning || patientIsLeaving || seconds <= 0f)
+        return;
+
+    // Show only what was really deducted (never more than is left).
+    float deducted = Mathf.Min(seconds, currentTime);
+
+    currentTime = Mathf.Max(0f, currentTime - seconds);
+
+    UpdateTimerText();
+
+    if (penaltyPopup != null)
+        penaltyPopup.Show(deducted);
+
+    if (currentTime <= 0f)
+        HandleTimeUp();
+}
+
+
+void HandleTimeUp()
+{
+    if (!timerRunning)
+        return;
+
+    timerRunning = false;
+
+    Debug.Log("TIME IS UP");
+
+    if (timerUI != null)
+        timerUI.SetActive(false);
+
+    if (patientLifeUI != null)
+        patientLifeUI.SetActive(false);
+
+    if (mixingManager != null &&
+        mixingManager.IsHoldingMedicine())
     {
-        timerText.text =
-            Mathf.CeilToInt(currentTime).ToString();
+        mixingManager.RemoveHeldMedicine();
     }
+
+    StartCoroutine(WrongMedicineSequence());
 }
 
 

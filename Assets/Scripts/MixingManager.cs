@@ -1526,6 +1526,38 @@ public class MixingManager : MonoBehaviour
             heldCompoundUI.SetActive(true);
     }
 
+    // =========================
+    // TRASH CAN SUPPORT
+    // =========================
+
+    public bool IsHoldingCompound()
+    {
+        return isHoldingCompound;
+    }
+
+    public bool DiscardHeldCompound()
+    {
+        if (!isHoldingCompound)
+            return false;
+
+        Debug.Log("Discarded compound: " + heldCompound);
+
+        ReturnHeldCompound();
+
+        return true;
+    }
+
+    public bool DiscardHeldMedicine()
+    {
+        if (!isHoldingMedicine)
+            return false;
+
+        Debug.Log("Discarded: " + heldMedicineName);
+
+        RemoveHeldMedicine();
+
+        return true;
+}
 
     // =========================
     // MEDICINE FUNCTIONS

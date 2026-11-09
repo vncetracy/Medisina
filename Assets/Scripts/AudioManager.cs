@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -27,6 +26,9 @@ public class AudioManager : MonoBehaviour
     [Header("Sound Effects")]
     public List<Sound> sounds = new List<Sound>();
 
+    [Range(0f, 1f)]
+    public float sfxVolume = 1f;
+
     private AudioSource musicSource;
     private AudioSource sfxSource;
 
@@ -49,12 +51,52 @@ public class AudioManager : MonoBehaviour
 
         sfxSource = gameObject.AddComponent<AudioSource>();
         sfxSource.playOnAwake = false;
+
+        LoadVolumes();
     }
 
     private void Start()
     {
         PlayBackgroundMusic();
     }
+
+    // =========================================================
+    // VOLUME SETTINGS
+    // =========================================================
+
+    public void LoadVolumes()
+    {
+        AudioListener.volume = PlayerPrefs.GetFloat("MasterVol", 1f);
+        musicVolume = PlayerPrefs.GetFloat("MusicVol", musicVolume);
+        sfxVolume = PlayerPrefs.GetFloat("SfxVol", 1f);
+
+        if (musicSource != null) musicSource.volume = musicVolume;
+        if (sfxSource != null) sfxSource.volume = sfxVolume;
+    }
+
+    public void SetMasterVolume(float v)
+    {
+        AudioListener.volume = v;
+        PlayerPrefs.SetFloat("MasterVol", v);
+    }
+
+    public void SetMusicVolume(float v)
+    {
+        musicVolume = v;
+        if (musicSource != null) musicSource.volume = v;
+        PlayerPrefs.SetFloat("MusicVol", v);
+    }
+
+    public void SetSfxVolume(float v)
+    {
+        sfxVolume = v;
+        if (sfxSource != null) sfxSource.volume = v;
+        PlayerPrefs.SetFloat("SfxVol", v);
+    }
+
+    // =========================================================
+    // PLAYBACK
+    // =========================================================
 
     public void PlayBackgroundMusic()
     {
