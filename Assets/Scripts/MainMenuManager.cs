@@ -15,6 +15,23 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        // Coming back after the tutorial: skip the title screen
+        // and start the real Day 1 right away.
+        if (TutorialManager.skipTitleOnLoad)
+        {
+            TutorialManager.skipTitleOnLoad = false;
+
+            mainMenuPanel.SetActive(false);
+
+            gameplayContainer.SetActive(true);
+
+            dayUI.SetActive(true);
+
+            day1Manager.StartDay1();
+
+            return;
+        }
+
         mainMenuPanel.SetActive(true);
 
         gameplayContainer.SetActive(false);

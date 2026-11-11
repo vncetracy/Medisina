@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -9,10 +11,18 @@ using TMPro;
 // - Each step points an arrow at a button; the player must click it.
 // - Info steps show a NEXT button instead.
 // - SKIP ends it at any time. The patient's timer is paused during it.
+// - When it ends (finished OR skipped) the screen fades to black and
+//   the REAL Day 1 starts from the beginning, with no tutorial.
 public class TutorialManager : MonoBehaviour
 {
     // Same key your GameManager already uses.
     public const string SavedKey = "TutorialCompleted";
+
+    // These survive the scene reload.
+    // MainMenuManager reads skipTitleOnLoad and goes straight to Day 1.
+    public static bool skipTitleOnLoad = false;
+    // TutorialManager reads fadeInOnLoad to fade back in from black.
+    public static bool fadeInOnLoad = false;
 
     public enum ArrowPoints { Down, Up, Left, Right }   // direction the arrow POINTS
     public enum BoxPosition { Top, Center, Bottom }
@@ -64,6 +74,16 @@ public class TutorialManager : MonoBehaviour
     public float arrowGap = 10f;
     public float bobAmount = 20f;
     public float bobSpeed = 6f;
+
+    [Header("End of Tutorial")]
+    [Tooltip("ON = after the tutorial (or SKIP): fade to black, then the REAL Day 1 starts from the beginning.")]
+    public bool restartGameAfterTutorial = true;
+
+    [Tooltip("A full-screen BLACK Image that has a Canvas Group component.")]
+    public CanvasGroup fadeGroup;
+
+    public float fadeOutTime = 0.8f;
+    public float fadeInTime = 0.8f;
 
     [Header("Testing")]
     [Tooltip("Turn ON to see the tutorial every time. Turn OFF for the real game.")]
@@ -151,7 +171,7 @@ public class TutorialManager : MonoBehaviour
             S("Give the medicine to the patient.",
               ArrowPoints.Down, BoxPosition.Top),
             // 20
-            S("Well done, Doctor! You're on your own now. Good luck!",
+            S("Great job, Doctor! Now let's begin your real shift. Good luck!",
               ArrowPoints.Down, BoxPosition.Center),
         };
     }
@@ -173,6 +193,18 @@ public class TutorialManager : MonoBehaviour
 
     public bool IsArmed { get { return armed; } }
 
+    void Awake()
+    {
+        // Coming back from the restart: start fully black so the
+        // title screen never flashes.
+        if (fadeInOnLoad && fadeGroup != null)
+        {
+            fadeGroup.gameObject.SetActive(true);
+            fadeGroup.alpha = 1f;
+            fadeGroup.blocksRaycasts = true;
+        }
+    }
+
     void Start()
     {
         if (day1Manager == null)
@@ -189,6 +221,20 @@ public class TutorialManager : MonoBehaviour
 
         if (tutorialOverlay != null)
             tutorialOverlay.SetActive(false);
+
+        if (fadeInOnLoad)
+        {
+            fadeInOnLoad = false;
+
+            if (fadeGroup != null)
+                StartCoroutine(FadeIn());
+        }
+        else if (fadeGroup != null)
+        {
+            fadeGroup.alpha = 0f;
+            fadeGroup.blocksRaycasts = false;
+            fadeGroup.gameObject.SetActive(false);
+        }
     }
 
     // True if the player already finished or skipped the tutorial before.
@@ -385,6 +431,7 @@ public class TutorialManager : MonoBehaviour
         FinishTutorial();
     }
 
+    // Used for BOTH finishing and skipping.
     void FinishTutorial()
     {
         isRunning = false;
@@ -400,11 +447,74 @@ public class TutorialManager : MonoBehaviour
         if (tutorialOverlay != null)
             tutorialOverlay.SetActive(false);
 
-        if (day1Manager != null)
-            day1Manager.timerPaused = false;
-
+        // Saved right away, so the tutorial never shows again.
         PlayerPrefs.SetInt(SavedKey, 1);
         PlayerPrefs.Save();
+
+        if (restartGameAfterTutorial)
+        {
+            // The timer stays paused until the scene reloads.
+            StartCoroutine(FadeOutAndRestart());
+            return;
+        }
+
+        // Old behavior: just keep playing the same patient.
+        if (day1Manager != null)
+            day1Manager.timerPaused = false;
+    }
+
+    // =========================================================
+    // FADE + RESTART
+    // =========================================================
+
+    IEnumerator FadeOutAndRestart()
+    {
+        if (fadeGroup != null)
+        {
+            fadeGroup.gameObject.SetActive(true);
+            fadeGroup.blocksRaycasts = true;
+
+            float duration = Mathf.Max(0.01f, fadeOutTime);
+            float t = 0f;
+
+            while (t < duration)
+            {
+                t += Time.unscaledDeltaTime;
+                fadeGroup.alpha = Mathf.Clamp01(t / duration);
+                yield return null;
+            }
+
+            fadeGroup.alpha = 1f;
+        }
+
+        // Next scene load: skip the title screen, start Day 1,
+        // and fade in from black.
+        skipTitleOnLoad = true;
+        fadeInOnLoad = true;
+
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator FadeIn()
+    {
+        // Let the new scene finish its first frame while still black.
+        yield return null;
+
+        float duration = Mathf.Max(0.01f, fadeInTime);
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            fadeGroup.alpha = 1f - Mathf.Clamp01(t / duration);
+            yield return null;
+        }
+
+        fadeGroup.alpha = 0f;
+        fadeGroup.blocksRaycasts = false;
+        fadeGroup.gameObject.SetActive(false);
     }
 
     // =========================================================

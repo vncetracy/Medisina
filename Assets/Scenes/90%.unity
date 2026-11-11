@@ -579,6 +579,7 @@ MonoBehaviour:
     patientSprite: {fileID: 1548136097, guid: 4990a3c55f643414a832759fa751af03, type: 3}
     healthySprite: {fileID: 550584849, guid: 4990a3c55f643414a832759fa751af03, type: 3}
     deadSprite: {fileID: 4120901811166270815, guid: 4990a3c55f643414a832759fa751af03, type: 3}
+    faceSprite: {fileID: -5476946754583052751, guid: eab70186d714fe04e83fa00a29a8c1b0, type: 3}
     isFake: 0
     illness: Flu
     correctMedicine: Paracetamol
@@ -590,6 +591,7 @@ MonoBehaviour:
     patientSprite: {fileID: -3862904964307631369, guid: 70efed20254d9f543a9888d827a427a5, type: 3}
     healthySprite: {fileID: 2714453574471835212, guid: 70efed20254d9f543a9888d827a427a5, type: 3}
     deadSprite: {fileID: 8530660036605219887, guid: 70efed20254d9f543a9888d827a427a5, type: 3}
+    faceSprite: {fileID: -351329617884133874, guid: d97d83240137c2149912d65e897f4663, type: 3}
     isFake: 0
     illness: None
     correctMedicine: Paracetamol
@@ -602,6 +604,7 @@ MonoBehaviour:
     patientSprite: {fileID: -345340437227008910, guid: 548f886e99ab0c14fb9c464f8355c290, type: 3}
     healthySprite: {fileID: 935624211365519521, guid: 548f886e99ab0c14fb9c464f8355c290, type: 3}
     deadSprite: {fileID: 6272167947993858847, guid: 548f886e99ab0c14fb9c464f8355c290, type: 3}
+    faceSprite: {fileID: 2840669254518327372, guid: bfacd71637a9af246931ea6e722f1e2d, type: 3}
     isFake: 0
     illness: Earwax Blockage
     correctMedicine: Paracetamol
@@ -626,6 +629,8 @@ MonoBehaviour:
   patientObject: {fileID: 1247319482}
   patientDialogueUI: {fileID: 791980985}
   patientDialogueText: {fileID: 1398581212}
+  facePopup: {fileID: 1212097738}
+  faceImage: {fileID: 1737442797}
   patientAnimator: {fileID: 1247319487}
   cureAnimationWaitTime: 2
   deathAnimationWaitTime: 2
@@ -4138,6 +4143,7 @@ RectTransform:
   m_Children:
   - {fileID: 757601374}
   - {fileID: 1991955090}
+  - {fileID: 352295844}
   - {fileID: 2013833678}
   - {fileID: 1595957382}
   m_Father: {fileID: 0}
@@ -4222,6 +4228,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349995311}
   m_CullTransparentMesh: 1
+--- !u!1 &352295843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 352295844}
+  - component: {fileID: 352295846}
+  - component: {fileID: 352295845}
+  - component: {fileID: 352295847}
+  m_Layer: 5
+  m_Name: TutorialFade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &352295844
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352295843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 334548556}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 8.988525, y: 26.835022}
+  m_SizeDelta: {x: 48.437, y: 144.2605}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &352295845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352295843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &352295846
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352295843}
+  m_CullTransparentMesh: 1
+--- !u!225 &352295847
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352295843}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &353766761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11410,6 +11504,10 @@ MonoBehaviour:
   arrowGap: 10
   bobAmount: 20
   bobSpeed: 6
+  restartGameAfterTutorial: 1
+  fadeGroup: {fileID: 352295847}
+  fadeOutTime: 1
+  fadeInTime: 1
   alwaysShowTutorial: 1
   steps:
   - text: Welcome to Medisina, Doctor! I'll guide you through your first patient.
@@ -11537,7 +11635,7 @@ MonoBehaviour:
     arrowPoints: 0
     boxPosition: 0
     allowAnyClick: 0
-  - text: Well done, Doctor! You're on your own now. Good luck!
+  - text: Great job, Doctor! Now let's begin your real shift. Good luck!
     targetButton: {fileID: 0}
     pointAt: {fileID: 0}
     arrowPoints: 0
@@ -14887,6 +14985,139 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1212097738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212097739}
+  - component: {fileID: 1212097742}
+  - component: {fileID: 1212097741}
+  - component: {fileID: 1212097740}
+  m_Layer: 5
+  m_Name: FacePopup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1212097739
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212097738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1737442796}
+  m_Father: {fileID: 1859208209}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -15, y: -7.485779}
+  m_SizeDelta: {x: -288.818, y: -68.317}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1212097740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212097738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1212097741}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 34712346}
+        m_TargetAssemblyTypeName: Day1Manager, Assembly-CSharp
+        m_MethodName: CloseFacePopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1212097741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212097738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1212097742
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212097738}
+  m_CullTransparentMesh: 1
 --- !u!1 &1229067031
 GameObject:
   m_ObjectHideFlags: 0
@@ -15262,6 +15493,18 @@ MonoBehaviour:
       - m_Target: {fileID: 34712346}
         m_TargetAssemblyTypeName: Day1Manager, Assembly-CSharp
         m_MethodName: GiveMedicineToPatient
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 34712346}
+        m_TargetAssemblyTypeName: Day1Manager, Assembly-CSharp
+        m_MethodName: ShowFacePopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19464,6 +19707,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736452939}
   m_CullTransparentMesh: 1
+--- !u!1 &1737442795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737442796}
+  - component: {fileID: 1737442798}
+  - component: {fileID: 1737442797}
+  m_Layer: 5
+  m_Name: FaceImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1737442796
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737442795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212097739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 16, y: 0}
+  m_SizeDelta: {x: -589.945, y: -168.851}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1737442797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737442795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1737442798
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737442795}
+  m_CullTransparentMesh: 1
 --- !u!1 &1756170876
 GameObject:
   m_ObjectHideFlags: 0
@@ -21005,6 +21323,7 @@ RectTransform:
   - {fileID: 2005065859}
   - {fileID: 769798818}
   - {fileID: 791980986}
+  - {fileID: 1212097739}
   m_Father: {fileID: 881804077}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

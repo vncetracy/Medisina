@@ -113,6 +113,10 @@ public GameObject patientDialogueUI;
 
 public TextMeshProUGUI patientDialogueText;
 
+[Header("Face Popup")]
+public GameObject facePopup;
+public Image faceImage;
+
 
 // =========================================================
 // PATIENT ANIMATION
@@ -447,6 +451,7 @@ void ShowCurrentPatient()
 
 IEnumerator BringPatient()
 {
+    CloseFacePopup();
     PatientData currentPatient =
         shuffledPatients[currentPatientIndex];
 
@@ -582,6 +587,42 @@ public void ClosePatientFile()
         patientFilePanel.SetActive(false);
 }
 
+// =========================================================
+// FACE POPUP
+// =========================================================
+
+public void ShowFacePopup()
+{
+    if (shuffledPatients == null || patientIsLeaving)
+        return;
+
+    if (currentPatientIndex >= shuffledPatients.Count)
+        return;
+
+    PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+    if (currentPatient.faceSprite == null)
+    {
+        Debug.LogWarning("No face sprite for " + currentPatient.patientName);
+        return;
+    }
+
+    if (faceImage != null)
+    {
+        faceImage.sprite = currentPatient.faceSprite;
+        faceImage.preserveAspect = true;
+    }
+
+    if (facePopup != null)
+        facePopup.SetActive(true);
+}
+
+public void CloseFacePopup()
+{
+    if (facePopup != null)
+        facePopup.SetActive(false);
+}
+
 
 // =========================================================
 // ACCEPT PATIENT
@@ -649,6 +690,7 @@ public void RejectPatient()
 
 IEnumerator RejectPatientSequence()
 {
+    CloseFacePopup();
     patientIsLeaving = true;
 
     rejectedPatients++;
@@ -816,6 +858,7 @@ public void GiveMedicineToPatient()
 
 IEnumerator CorrectMedicineSequence()
 {
+    CloseFacePopup();
     patientIsLeaving = true;
 
     curedPatients++;
@@ -880,6 +923,7 @@ IEnumerator CorrectMedicineSequence()
 
 IEnumerator WrongMedicineSequence()
 {
+    CloseFacePopup();
     patientIsLeaving = true;
 
     deadPatients++;
