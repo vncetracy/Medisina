@@ -6,1423 +6,1127 @@ using TMPro;
 
 public class Day1Manager : MonoBehaviour
 {
-// =========================================================
-// DAY SETTINGS
-// =========================================================
+    // =========================================================
+    // DAY SETTINGS
+    // =========================================================
 
-[Header("Day Settings")]
-public int totalPatients = 3;
+    [Header("Day Settings")]
+    public int totalPatients = 3;
 
-[Header("Patient Data")]
-public List<PatientData> day1Patients;
+    [Header("Patient Data")]
+    public List<PatientData> day1Patients;
 
-private List<PatientData> shuffledPatients;
+    private List<PatientData> shuffledPatients;
 
-private int currentPatientIndex = 0;
+    private int currentPatientIndex = 0;
 
-private bool patientAccepted = false;
-private bool patientIsLeaving = false;
+    private bool patientAccepted = false;
+    private bool patientIsLeaving = false;
 
 
-// =========================================================
-// DAY RESULT
-// =========================================================
+    // =========================================================
+    // DAY RESULT
+    // =========================================================
 
-[Header("Day Result")]
+    [Header("Day Result")]
+    public GameObject dayResultPanel;
+    public TextMeshProUGUI dayResultTitle;
+    public TextMeshProUGUI dayResultStats;
+    public int minimumPatientsToCure = 2;
 
-public GameObject dayResultPanel;
 
-public TextMeshProUGUI dayResultTitle;
+    // =========================================================
+    // PATIENT RECORDS
+    // =========================================================
 
-public TextMeshProUGUI dayResultStats;
+    [Header("Patient Records")]
+    public GameObject patientRecordsPanel;
+    public TextMeshProUGUI patientRecordTitle;
+    public TextMeshProUGUI patientRecordText;
+    public TextMeshProUGUI patientRecordCounter;
+    public Button patientRecordNextButton;
 
-public int minimumPatientsToCure = 2;
+    private int currentRecordIndex = 0;
 
 
-// =========================================================
-// PATIENT RECORDS
-// =========================================================
+    // =========================================================
+    // SUPERVISOR CALL
+    // =========================================================
 
-[Header("Patient Records")]
+    [Header("Supervisor Call")]
+    public GameObject supervisorPanel;
+    public TextMeshProUGUI supervisorTitle;
+    public TextMeshProUGUI supervisorDialogue;
+    public Button supervisorNextButton;
 
-public GameObject patientRecordsPanel;
 
-public TextMeshProUGUI patientRecordTitle;
+    // =========================================================
+    // FINAL RESULT
+    // =========================================================
 
-public TextMeshProUGUI patientRecordText;
+    [Header("Final Result")]
+    public GameObject finalResultPanel;
+    public TextMeshProUGUI finalResultTitle;
+    public TextMeshProUGUI finalResultMessage;
+    public Button finalResultButton;
 
-public TextMeshProUGUI patientRecordCounter;
+    private bool dayPassed = false;
 
-public Button patientRecordNextButton;
 
-private int currentRecordIndex = 0;
+    // =========================================================
+    // PATIENT RESULT COUNTERS
+    // =========================================================
 
+    private int curedPatients = 0;
+    private int deadPatients = 0;
+    private int rejectedPatients = 0;
 
-// =========================================================
-// SUPERVISOR CALL
-// =========================================================
 
-[Header("Supervisor Call")]
+    // =========================================================
+    // PATIENT DISPLAY
+    // =========================================================
 
-public GameObject supervisorPanel;
+    [Header("Patient Display")]
+    public Image patientImage;
+    public GameObject patientObject;
+    public GameObject patientDialogueUI;
+    public TextMeshProUGUI patientDialogueText;
 
-public TextMeshProUGUI supervisorTitle;
+    [Header("Face Popup")]
+    public GameObject facePopup;
+    public Image faceImage;
 
-public TextMeshProUGUI supervisorDialogue;
 
-public Button supervisorNextButton;
+    // =========================================================
+    // PATIENT ANIMATION
+    // =========================================================
 
+    [Header("Patient Animation")]
+    public Animator patientAnimator;
+    public float cureAnimationWaitTime = 2f;
+    public float deathAnimationWaitTime = 2f;
 
-// =========================================================
-// FINAL RESULT
-// =========================================================
 
-[Header("Final Result")]
+    // =========================================================
+    // DAY UI
+    // =========================================================
 
-public GameObject finalResultPanel;
+    [Header("Day UI")]
+    public GameObject dayUI;
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI patientCounterText;
 
-public TextMeshProUGUI finalResultTitle;
 
-public TextMeshProUGUI finalResultMessage;
+    // =========================================================
+    // TIMER
+    // =========================================================
 
-public Button finalResultButton;
+    [Header("Timer and Patient Life")]
+    public GameObject timerUI;
+    public GameObject patientLifeUI;
+    public TextMeshProUGUI timerText;
+    public TimePenaltyPopup penaltyPopup;
+    public float startingTime = 60f;
 
-private bool dayPassed = false;
+    private float currentTime;
+    private bool timerRunning;
 
 
-// =========================================================
-// PATIENT RESULT COUNTERS
-// =========================================================
+    // =========================================================
+    // PATIENT FILE
+    // =========================================================
 
-private int curedPatients = 0;
-private int deadPatients = 0;
-private int rejectedPatients = 0;
+    [Header("Patient File")]
+    public GameObject patientFilePanel;
+    public TextMeshProUGUI patientNameText;
+    public TextMeshProUGUI patientAgeText;
+    public TextMeshProUGUI patientSymptomsText;
+    public TextMeshProUGUI patientAllergyText;
 
 
-// =========================================================
-// PATIENT DISPLAY
-// =========================================================
+    // =========================================================
+    // MIXING
+    // =========================================================
 
-[Header("Patient Display")]
+    [Header("Mixing")]
+    public MixingManager mixingManager;
 
-public Image patientImage;
+    [Header("Tutorial")]
+    public TutorialManager tutorialManager;
+    public string tutorialMedicineName = "Paracetamol";
+    public bool timerPaused = false;
 
-public GameObject patientObject;
 
-public GameObject patientDialogueUI;
+    // =========================================================
+    // START
+    // =========================================================
 
-public TextMeshProUGUI patientDialogueText;
-
-[Header("Face Popup")]
-public GameObject facePopup;
-public Image faceImage;
-
-
-// =========================================================
-// PATIENT ANIMATION
-// =========================================================
-
-[Header("Patient Animation")]
-
-public Animator patientAnimator;
-
-public float cureAnimationWaitTime = 2f;
-
-public float deathAnimationWaitTime = 2f;
-
-
-// =========================================================
-// DAY UI
-// =========================================================
-
-[Header("Day UI")]
-
-public GameObject dayUI;
-
-public TextMeshProUGUI dayText;
-
-public TextMeshProUGUI patientCounterText;
-
-
-// =========================================================
-// TIMER
-// =========================================================
-
-[Header("Timer and Patient Life")]
-
-public GameObject timerUI;
-
-public GameObject patientLifeUI;
-
-public TextMeshProUGUI timerText;
-
-public TimePenaltyPopup penaltyPopup;
-
-public float startingTime = 60f;
-
-private float currentTime;
-
-private bool timerRunning;
-
-
-// =========================================================
-// PATIENT FILE
-// =========================================================
-
-[Header("Patient File")]
-
-public GameObject patientFilePanel;
-
-public TextMeshProUGUI patientNameText;
-
-public TextMeshProUGUI patientAgeText;
-
-public TextMeshProUGUI patientSymptomsText;
-
-public TextMeshProUGUI patientAllergyText;
-
-
-// =========================================================
-// MIXING
-// =========================================================
-
-[Header("Mixing")]
-
-public MixingManager mixingManager;
-
-[Header("Tutorial")]
-public TutorialManager tutorialManager;
-public string tutorialMedicineName = "Paracetamol";
-public bool timerPaused = false;
-
-
-// =========================================================
-// START
-// =========================================================
-
-void Start()
-{
-    HideEndingUI();
-}
-
-
-// =========================================================
-// START DAY 1
-// =========================================================
-
-public void StartDay1()
-{
-    StopAllCoroutines();
-
-    StartCoroutine(StartDaySequence());
-}
-
-
-IEnumerator StartDaySequence()
-{
-    ShufflePatients();
-
-    currentPatientIndex = 0;
-
-    patientAccepted = false;
-
-    patientIsLeaving = false;
-
-    timerRunning = false;
-
-
-    // Reset counters
-
-    curedPatients = 0;
-
-    deadPatients = 0;
-
-    rejectedPatients = 0;
-
-
-    // Reset record index
-
-    currentRecordIndex = 0;
-
-    dayPassed = false;
-
-
-    // Hide ending UI
-
-    HideEndingUI();
-
-
-    // Hide patient-related UI
-
-    if (patientObject != null)
-        patientObject.SetActive(false);
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-    if (timerUI != null)
-        timerUI.SetActive(false);
-
-    if (patientLifeUI != null)
-        patientLifeUI.SetActive(false);
-
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(false);
-
-
-    // Show day intro
-
-    if (dayUI != null)
-        dayUI.SetActive(true);
-
-    if (dayText != null)
-        dayText.text = "DAY 1";
-
-    if (patientCounterText != null)
-        patientCounterText.text =
-            "PATIENT 1 / " + totalPatients;
-
-
-    yield return new WaitForSeconds(2f);
-
-
-    if (dayUI != null)
-        dayUI.SetActive(false);
-
-
-    yield return new WaitForSeconds(0.5f);
-
-
-    ShowCurrentPatient();
-}
-
-
-// =========================================================
-// UPDATE
-// =========================================================
-
-void Update()
-{
-    if (!timerRunning || timerPaused)
-        return;
-
-    currentTime -= Time.deltaTime;
-
-    if (currentTime <= 0f)
-        currentTime = 0f;
-
-    UpdateTimerText();
-
-    if (currentTime <= 0f)
-        HandleTimeUp();
-}
-
-
-void UpdateTimerText()
-{
-    if (timerText != null)
-        timerText.text = Mathf.CeilToInt(currentTime).ToString();
-}
-
-
-public void PenalizeTime(float seconds)
-{
-    if (!timerRunning || timerPaused || patientIsLeaving || seconds <= 0f)
-        return;
-
-    // Show only what was really deducted (never more than is left).
-    float deducted = Mathf.Min(seconds, currentTime);
-
-    currentTime = Mathf.Max(0f, currentTime - seconds);
-
-    UpdateTimerText();
-
-    if (penaltyPopup != null)
-        penaltyPopup.Show(deducted);
-
-    if (currentTime <= 0f)
-        HandleTimeUp();
-}
-
-
-void HandleTimeUp()
-{
-    if (!timerRunning)
-        return;
-
-    timerRunning = false;
-
-    Debug.Log("TIME IS UP");
-
-    if (timerUI != null)
-        timerUI.SetActive(false);
-
-    if (patientLifeUI != null)
-        patientLifeUI.SetActive(false);
-
-    if (mixingManager != null &&
-        mixingManager.IsHoldingMedicine())
+    void Start()
     {
-        mixingManager.RemoveHeldMedicine();
-    }
-
-    StartCoroutine(WrongMedicineSequence());
-}
-
-
-// =========================================================
-// SHUFFLE PATIENTS
-// =========================================================
-
-void ShufflePatients()
-{
-    shuffledPatients =
-        new List<PatientData>(day1Patients);
-
-
-    for (int i = 0;
-         i < shuffledPatients.Count;
-         i++)
-    {
-        PatientData temp =
-            shuffledPatients[i];
-
-
-        int randomIndex =
-            Random.Range(
-                i,
-                shuffledPatients.Count
-            );
-
-
-        shuffledPatients[i] =
-            shuffledPatients[randomIndex];
-
-
-        shuffledPatients[randomIndex] =
-            temp;
-    }
-
-    if (tutorialManager != null && tutorialManager.IsArmed)
-    {
-        int idx = shuffledPatients.FindIndex(
-            p => p != null && p.correctMedicine == tutorialMedicineName);
-
-        if (idx > 0)
-        {
-            PatientData first = shuffledPatients[0];
-            shuffledPatients[0] = shuffledPatients[idx];
-            shuffledPatients[idx] = first;
-        }
-        else if (idx < 0)
-        {
-            Debug.LogWarning("Tutorial: no patient needs '" +
-                tutorialMedicineName + "'. Check the name.");
-        }
-    }
-}
-
-
-// =========================================================
-// SHOW CURRENT PATIENT
-// =========================================================
-
-void ShowCurrentPatient()
-{
-    if (shuffledPatients == null)
-        return;
-
-
-    if (currentPatientIndex >= shuffledPatients.Count)
-    {
-        EndDay();
-
-        return;
+        HideEndingUI();
     }
 
 
-    StartCoroutine(BringPatient());
-}
+    // =========================================================
+    // START DAY 1
+    // =========================================================
 
-
-// =========================================================
-// BRING PATIENT
-// =========================================================
-
-IEnumerator BringPatient()
-{
-    CloseFacePopup();
-    PatientData currentPatient =
-        shuffledPatients[currentPatientIndex];
-
-
-    patientAccepted = false;
-
-    patientIsLeaving = false;
-
-    timerRunning = false;
-
-
-    if (timerUI != null)
-        timerUI.SetActive(false);
-
-
-    if (patientLifeUI != null)
-        patientLifeUI.SetActive(false);
-
-
-    // Current patient's sick sprite
-
-    if (patientImage != null)
-        patientImage.sprite =
-            currentPatient.patientSprite;
-
-
-    if (patientObject != null)
-        patientObject.SetActive(false);
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(false);
-
-
-    yield return new WaitForSeconds(1f);
-
-
-    if (patientObject != null)
-        patientObject.SetActive(true);
-
-
-    // Reset Animator
-
-    if (patientAnimator != null)
+    public void StartDay1()
     {
-        patientAnimator.Rebind();
+        StopAllCoroutines();
 
-        patientAnimator.Update(0f);
+        StartCoroutine(StartDaySequence());
     }
 
 
-    yield return new WaitForSeconds(1f);
-
-
-    if (patientDialogueText != null)
-        patientDialogueText.text =
-            currentPatient.dialogue;
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(true);
-
-
-    if (patientCounterText != null)
+    IEnumerator StartDaySequence()
     {
-        patientCounterText.text =
-            "PATIENT " +
-            (currentPatientIndex + 1) +
-            " / " +
-            totalPatients;
-    }
-
-    if (tutorialManager != null)
-        tutorialManager.OnPatientArrived();
-
-}
-
-
-// =========================================================
-// PATIENT FILE
-// =========================================================
-
-public void OpenPatientFile()
-{
-    if (shuffledPatients == null)
-        return;
-
-
-    if (currentPatientIndex >= shuffledPatients.Count)
-        return;
-
-
-    PatientData currentPatient =
-        shuffledPatients[currentPatientIndex];
-
-
-    if (patientNameText != null)
-        patientNameText.text =
-            "NAME: " +
-            currentPatient.patientName;
-
-
-    if (patientAgeText != null)
-        patientAgeText.text =
-            "AGE: " +
-            currentPatient.age;
-
-
-    if (patientSymptomsText != null)
-        patientSymptomsText.text =
-            "SYMPTOMS:\n" +
-            currentPatient.symptoms;
-
-
-    if (patientAllergyText != null)
-        patientAllergyText.text =
-            "ALLERGIES:\n" +
-            currentPatient.allergy;
-
-
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(true);
-}
-
-
-public void ClosePatientFile()
-{
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(false);
-}
-
-// =========================================================
-// FACE POPUP
-// =========================================================
-
-public void ShowFacePopup()
-{
-    if (shuffledPatients == null || patientIsLeaving)
-        return;
-
-    if (currentPatientIndex >= shuffledPatients.Count)
-        return;
-
-    PatientData currentPatient = shuffledPatients[currentPatientIndex];
-
-    if (currentPatient.faceSprite == null)
-    {
-        Debug.LogWarning("No face sprite for " + currentPatient.patientName);
-        return;
-    }
-
-    if (faceImage != null)
-    {
-        faceImage.sprite = currentPatient.faceSprite;
-        faceImage.preserveAspect = true;
-    }
-
-    if (facePopup != null)
-        facePopup.SetActive(true);
-}
-
-public void CloseFacePopup()
-{
-    if (facePopup != null)
-        facePopup.SetActive(false);
-}
-
-
-// =========================================================
-// ACCEPT PATIENT
-// =========================================================
-
-public void AcceptPatient()
-{
-    if (patientAccepted ||
-        patientIsLeaving)
-        return;
-
-
-    patientAccepted = true;
-
-
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(false);
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-
-    if (timerUI != null)
-        timerUI.SetActive(true);
-
-
-    if (patientLifeUI != null)
-        patientLifeUI.SetActive(true);
-
-
-    currentTime = startingTime;
-
-
-    if (timerText != null)
-        timerText.text =
-            Mathf.CeilToInt(currentTime).ToString();
-
-
-    timerRunning = true;
-
-
-    Debug.Log(
-        "Patient accepted. Timer started."
-    );
-}
-
-
-// =========================================================
-// REJECT PATIENT
-// =========================================================
-
-public void RejectPatient()
-{
-    if (patientAccepted ||
-        patientIsLeaving)
-        return;
-
-
-    StartCoroutine(
-        RejectPatientSequence()
-    );
-}
-
-
-IEnumerator RejectPatientSequence()
-{
-    CloseFacePopup();
-    patientIsLeaving = true;
-
-    rejectedPatients++;
-
-
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(false);
-
-
-    if (patientDialogueText != null)
-        patientDialogueText.text =
-            "BAKLA BAKLA BAKLA!!!.";
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(true);
-
-
-    yield return new WaitForSeconds(2f);
-
-
-    if (patientObject != null)
-        patientObject.SetActive(false);
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-
-    currentPatientIndex++;
-
-
-    patientAccepted = false;
-
-    patientIsLeaving = false;
-
-
-    yield return new WaitForSeconds(1f);
-
-
-    ShowCurrentPatient();
-}
-
-
-// =========================================================
-// GIVE MEDICINE
-// =========================================================
-
-public void GiveMedicineToPatient()
-{
-    if (!patientAccepted)
-        return;
-
-
-    if (patientIsLeaving)
-        return;
-
-
-    if (mixingManager == null)
-    {
-        Debug.Log(
-            "MixingManager is not assigned."
-        );
-
-        return;
-    }
-
-
-    if (!mixingManager.IsHoldingMedicine())
-    {
-        Debug.Log(
-            "Player is not holding medicine."
-        );
-
-        return;
-    }
-
-
-    if (shuffledPatients == null)
-        return;
-
-
-    if (currentPatientIndex >=
-        shuffledPatients.Count)
-        return;
-
-
-    PatientData currentPatient =
-        shuffledPatients[currentPatientIndex];
-
-
-    string givenMedicine =
-        mixingManager.GetHeldMedicine();
-
-
-    Debug.Log(
-        "Patient needs: " +
-        currentPatient.correctMedicine
-    );
-
-
-    Debug.Log(
-        "Player gave: " +
-        givenMedicine
-    );
-
-
-    if (givenMedicine ==
-        currentPatient.correctMedicine)
-    {
-        Debug.Log(
-            "CORRECT MEDICINE!"
-        );
-
-
-        mixingManager.RemoveHeldMedicine();
-
-
+        ShufflePatients();
+
+        currentPatientIndex = 0;
+        patientAccepted = false;
+        patientIsLeaving = false;
         timerRunning = false;
 
+        // Reset counters
+        curedPatients = 0;
+        deadPatients = 0;
+        rejectedPatients = 0;
+
+        // Reset record index
+        currentRecordIndex = 0;
+        dayPassed = false;
+
+        // Hide ending UI
+        HideEndingUI();
+
+        // Hide patient-related UI
+        if (patientObject != null)
+            patientObject.SetActive(false);
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
 
         if (timerUI != null)
             timerUI.SetActive(false);
 
-
         if (patientLifeUI != null)
             patientLifeUI.SetActive(false);
 
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(false);
 
-        StartCoroutine(
-            CorrectMedicineSequence()
-        );
+        // Show day intro
+        if (dayUI != null)
+            dayUI.SetActive(true);
+
+        if (dayText != null)
+            dayText.text = "DAY 1";
+
+        if (patientCounterText != null)
+            patientCounterText.text = "PATIENT 1 / " + totalPatients;
+
+        yield return new WaitForSeconds(2f);
+
+        if (dayUI != null)
+            dayUI.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+
+        ShowCurrentPatient();
     }
-    else
+
+
+    // =========================================================
+    // UPDATE
+    // =========================================================
+
+    void Update()
     {
-        Debug.Log(
-            "WRONG MEDICINE!"
-        );
+        if (!timerRunning || timerPaused)
+            return;
+
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0f)
+            currentTime = 0f;
+
+        UpdateTimerText();
+
+        if (currentTime <= 0f)
+            HandleTimeUp();
+    }
 
 
-        mixingManager.RemoveHeldMedicine();
+    void UpdateTimerText()
+    {
+        if (timerText != null)
+            timerText.text = Mathf.CeilToInt(currentTime).ToString();
+    }
 
+
+    public void PenalizeTime(float seconds)
+    {
+        if (!timerRunning || timerPaused || patientIsLeaving || seconds <= 0f)
+            return;
+
+        // Show only what was really deducted (never more than is left).
+        float deducted = Mathf.Min(seconds, currentTime);
+
+        currentTime = Mathf.Max(0f, currentTime - seconds);
+
+        UpdateTimerText();
+
+        if (penaltyPopup != null)
+            penaltyPopup.Show(deducted);
+
+        if (currentTime <= 0f)
+            HandleTimeUp();
+    }
+
+
+    void HandleTimeUp()
+    {
+        if (!timerRunning)
+            return;
 
         timerRunning = false;
 
+        Debug.Log("TIME IS UP");
 
         if (timerUI != null)
             timerUI.SetActive(false);
 
+        if (patientLifeUI != null)
+            patientLifeUI.SetActive(false);
+
+        if (mixingManager != null &&
+            mixingManager.IsHoldingMedicine())
+        {
+            mixingManager.RemoveHeldMedicine();
+        }
+
+        StartCoroutine(WrongMedicineSequence());
+    }
+
+
+    // =========================================================
+    // SHUFFLE PATIENTS
+    // =========================================================
+
+    void ShufflePatients()
+    {
+        shuffledPatients = new List<PatientData>(day1Patients);
+
+        for (int i = 0; i < shuffledPatients.Count; i++)
+        {
+            PatientData temp = shuffledPatients[i];
+
+            int randomIndex = Random.Range(i, shuffledPatients.Count);
+
+            shuffledPatients[i] = shuffledPatients[randomIndex];
+            shuffledPatients[randomIndex] = temp;
+        }
+
+        if (tutorialManager != null && tutorialManager.IsArmed)
+        {
+            int idx = shuffledPatients.FindIndex(
+                p => p != null && p.correctMedicine == tutorialMedicineName);
+
+            if (idx > 0)
+            {
+                PatientData first = shuffledPatients[0];
+                shuffledPatients[0] = shuffledPatients[idx];
+                shuffledPatients[idx] = first;
+            }
+            else if (idx < 0)
+            {
+                Debug.LogWarning("Tutorial: no patient needs '" +
+                    tutorialMedicineName + "'. Check the name.");
+            }
+        }
+    }
+
+
+    // =========================================================
+    // SHOW CURRENT PATIENT
+    // =========================================================
+
+    void ShowCurrentPatient()
+    {
+        if (shuffledPatients == null)
+            return;
+
+        if (currentPatientIndex >= shuffledPatients.Count)
+        {
+            EndDay();
+            return;
+        }
+
+        StartCoroutine(BringPatient());
+    }
+
+
+    // =========================================================
+    // BRING PATIENT
+    // =========================================================
+
+    IEnumerator BringPatient()
+    {
+        CloseFacePopup();
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        patientAccepted = false;
+        patientIsLeaving = false;
+        timerRunning = false;
+
+        if (timerUI != null)
+            timerUI.SetActive(false);
 
         if (patientLifeUI != null)
             patientLifeUI.SetActive(false);
 
+        // Current patient's sick sprite
+        if (patientImage != null)
+            patientImage.sprite = currentPatient.patientSprite;
 
-        StartCoroutine(
-            WrongMedicineSequence()
-        );
-    }
-}
+        if (patientObject != null)
+            patientObject.SetActive(false);
 
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
 
-// =========================================================
-// CORRECT MEDICINE
-// =========================================================
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(false);
 
-IEnumerator CorrectMedicineSequence()
-{
-    CloseFacePopup();
-    patientIsLeaving = true;
+        yield return new WaitForSeconds(1f);
 
-    curedPatients++;
+        if (patientObject != null)
+            patientObject.SetActive(true);
 
-
-    PatientData currentPatient =
-        shuffledPatients[currentPatientIndex];
-
-
-    if (patientDialogueText != null)
-        patientDialogueText.text =
-            "Thank you, doctor! I feel much better.";
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(true);
-
-
-    if (patientImage != null &&
-        currentPatient.healthySprite != null)
-    {
-        patientImage.sprite =
-            currentPatient.healthySprite;
-    }
-
-
-    if (patientAnimator != null)
-        patientAnimator.SetTrigger("Cure");
-
-
-    yield return new WaitForSeconds(
-        cureAnimationWaitTime
-    );
-
-
-    if (patientObject != null)
-        patientObject.SetActive(false);
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-
-    currentPatientIndex++;
-
-
-    patientAccepted = false;
-
-    patientIsLeaving = false;
-
-
-    yield return new WaitForSeconds(1f);
-
-
-    ShowCurrentPatient();
-}
-
-
-// =========================================================
-// WRONG MEDICINE
-// =========================================================
-
-IEnumerator WrongMedicineSequence()
-{
-    CloseFacePopup();
-    patientIsLeaving = true;
-
-    deadPatients++;
-
-
-    PatientData currentPatient =
-        shuffledPatients[currentPatientIndex];
-
-
-    if (patientDialogueText != null)
-        patientDialogueText.text =
-            "Something... is wrong...";
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(true);
-
-
-    if (patientImage != null &&
-        currentPatient.deadSprite != null)
-    {
-        patientImage.sprite =
-            currentPatient.deadSprite;
-    }
-
-
-    if (patientAnimator != null)
-        patientAnimator.SetTrigger("Death");
-
-
-    yield return new WaitForSeconds(
-        deathAnimationWaitTime
-    );
-
-
-    if (patientObject != null)
-        patientObject.SetActive(false);
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-
-    currentPatientIndex++;
-
-
-    patientAccepted = false;
-
-    patientIsLeaving = false;
-
-
-    yield return new WaitForSeconds(1f);
-
-
-    ShowCurrentPatient();
-}
-
-
-// =========================================================
-// END DAY
-// =========================================================
-
-void EndDay()
-{
-    timerRunning = false;
-
-
-    if (timerUI != null)
-        timerUI.SetActive(false);
-
-
-    if (patientLifeUI != null)
-        patientLifeUI.SetActive(false);
-
-
-    if (patientDialogueUI != null)
-        patientDialogueUI.SetActive(false);
-
-
-    if (patientFilePanel != null)
-        patientFilePanel.SetActive(false);
-
-
-    if (patientObject != null)
-        patientObject.SetActive(false);
-
-
-    dayPassed =
-        curedPatients >= minimumPatientsToCure;
-
-
-    ShowDailyReport();
-}
-
-
-// =========================================================
-// DAILY REPORT
-// =========================================================
-
-void ShowDailyReport()
-{
-    if (dayResultPanel != null)
-        dayResultPanel.SetActive(true);
-
-
-    if (dayResultTitle != null)
-    {
-        if (dayPassed)
+        // Reset Animator
+        if (patientAnimator != null)
         {
-            dayResultTitle.text =
-                "DAY 1 COMPLETE";
+            patientAnimator.Rebind();
+            patientAnimator.Update(0f);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        if (patientDialogueText != null)
+            patientDialogueText.text = currentPatient.dialogue;
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(true);
+
+        if (patientCounterText != null)
+        {
+            patientCounterText.text =
+                "PATIENT " +
+                (currentPatientIndex + 1) +
+                " / " +
+                totalPatients;
+        }
+
+        if (tutorialManager != null)
+            tutorialManager.OnPatientArrived();
+    }
+
+
+    // =========================================================
+    // PATIENT FILE
+    // =========================================================
+
+    public void OpenPatientFile()
+    {
+        if (shuffledPatients == null)
+            return;
+
+        if (currentPatientIndex >= shuffledPatients.Count)
+            return;
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        if (patientNameText != null)
+            patientNameText.text = "NAME: " + currentPatient.patientName;
+
+        if (patientAgeText != null)
+            patientAgeText.text = "AGE: " + currentPatient.age;
+
+        if (patientSymptomsText != null)
+            patientSymptomsText.text = "SYMPTOMS:\n" + currentPatient.symptoms;
+
+        if (patientAllergyText != null)
+            patientAllergyText.text = "ALLERGIES:\n" + currentPatient.allergy;
+
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(true);
+    }
+
+
+    public void ClosePatientFile()
+    {
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(false);
+    }
+
+
+    // =========================================================
+    // FACE POPUP
+    // =========================================================
+
+    public void ShowFacePopup()
+    {
+        if (shuffledPatients == null || patientIsLeaving)
+            return;
+
+        if (currentPatientIndex >= shuffledPatients.Count)
+            return;
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        // Faking patients show their fake face; everyone else shows the normal one.
+        Sprite spriteToShow = currentPatient.isFake
+            ? currentPatient.fakeFaceSprite
+            : currentPatient.faceSprite;
+
+        if (spriteToShow == null)
+        {
+            Debug.LogWarning("No face sprite for " + currentPatient.patientName +
+                (currentPatient.isFake ? " (fake face)" : ""));
+            return;
+        }
+
+        if (faceImage != null)
+        {
+            faceImage.sprite = spriteToShow;
+            faceImage.preserveAspect = true;
+        }
+
+        if (facePopup != null)
+            facePopup.SetActive(true);
+    }
+
+    public void CloseFacePopup()
+    {
+        if (facePopup != null)
+            facePopup.SetActive(false);
+    }
+
+
+    // =========================================================
+    // ACCEPT PATIENT
+    // =========================================================
+
+    public void AcceptPatient()
+    {
+        if (patientAccepted || patientIsLeaving)
+            return;
+
+        patientAccepted = true;
+
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(false);
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
+
+        if (timerUI != null)
+            timerUI.SetActive(true);
+
+        if (patientLifeUI != null)
+            patientLifeUI.SetActive(true);
+
+        currentTime = startingTime;
+
+        if (timerText != null)
+            timerText.text = Mathf.CeilToInt(currentTime).ToString();
+
+        timerRunning = true;
+
+        Debug.Log("Patient accepted. Timer started.");
+    }
+
+
+    // =========================================================
+    // REJECT PATIENT
+    // =========================================================
+
+    public void RejectPatient()
+    {
+        if (patientAccepted || patientIsLeaving)
+            return;
+
+        StartCoroutine(RejectPatientSequence());
+    }
+
+
+    IEnumerator RejectPatientSequence()
+    {
+        CloseFacePopup();
+
+        patientIsLeaving = true;
+        rejectedPatients++;
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(false);
+
+        if (currentPatient.isFake)
+        {
+            // Correct rejection: the faker is caught.
+            if (patientImage != null && currentPatient.angrySprite != null)
+                patientImage.sprite = currentPatient.angrySprite;
+
+            if (patientDialogueText != null)
+                patientDialogueText.text = "You caught me";
+
+            if (patientDialogueUI != null)
+                patientDialogueUI.SetActive(true);
         }
         else
         {
-            dayResultTitle.text =
-                "DAY 1 FAILED";
+            // Wrong rejection: a genuinely sick patient was turned away.
+            // Sprite becomes the dead sprite, no dialogue.
+            if (patientDialogueUI != null)
+                patientDialogueUI.SetActive(false);
+
+            if (patientImage != null && currentPatient.deadSprite != null)
+                patientImage.sprite = currentPatient.deadSprite;
+
+            if (patientAnimator != null)
+                patientAnimator.SetTrigger("Death"); // remove this line if you only want the sprite swap
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        if (patientObject != null)
+            patientObject.SetActive(false);
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
+
+        currentPatientIndex++;
+
+        patientAccepted = false;
+        patientIsLeaving = false;
+
+        yield return new WaitForSeconds(1f);
+
+        ShowCurrentPatient();
+    }
+
+
+    // =========================================================
+    // GIVE MEDICINE
+    // =========================================================
+
+    public void GiveMedicineToPatient()
+    {
+        if (!patientAccepted)
+            return;
+
+        if (patientIsLeaving)
+            return;
+
+        if (mixingManager == null)
+        {
+            Debug.Log("MixingManager is not assigned.");
+            return;
+        }
+
+        if (!mixingManager.IsHoldingMedicine())
+        {
+            Debug.Log("Player is not holding medicine.");
+            return;
+        }
+
+        if (shuffledPatients == null)
+            return;
+
+        if (currentPatientIndex >= shuffledPatients.Count)
+            return;
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        string givenMedicine = mixingManager.GetHeldMedicine();
+
+        Debug.Log("Patient needs: " + currentPatient.correctMedicine);
+        Debug.Log("Player gave: " + givenMedicine);
+
+        if (givenMedicine == currentPatient.correctMedicine)
+        {
+            Debug.Log("CORRECT MEDICINE!");
+
+            mixingManager.RemoveHeldMedicine();
+
+            timerRunning = false;
+
+            if (timerUI != null)
+                timerUI.SetActive(false);
+
+            if (patientLifeUI != null)
+                patientLifeUI.SetActive(false);
+
+            StartCoroutine(CorrectMedicineSequence());
+        }
+        else
+        {
+            Debug.Log("WRONG MEDICINE!");
+
+            mixingManager.RemoveHeldMedicine();
+
+            timerRunning = false;
+
+            if (timerUI != null)
+                timerUI.SetActive(false);
+
+            if (patientLifeUI != null)
+                patientLifeUI.SetActive(false);
+
+            StartCoroutine(WrongMedicineSequence());
         }
     }
 
 
-    if (dayResultStats != null)
+    // =========================================================
+    // CORRECT MEDICINE
+    // =========================================================
+
+    IEnumerator CorrectMedicineSequence()
     {
-        dayResultStats.text =
-            "PATIENTS EXAMINED: " +
-            totalPatients +
-            "\n\n" +
+        CloseFacePopup();
 
-            "PATIENTS CURED: " +
-            curedPatients +
-            "\n" +
+        patientIsLeaving = true;
+        curedPatients++;
 
-            "PATIENTS DECEASED: " +
-            deadPatients +
-            "\n" +
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
 
-            "PATIENTS REJECTED: " +
-            rejectedPatients;
-    }
-}
+        if (patientDialogueText != null)
+            patientDialogueText.text = "Thank you, doctor! I feel much better.";
 
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(true);
 
-// =========================================================
-// OPEN PATIENT RECORDS
-// =========================================================
+        if (patientImage != null && currentPatient.healthySprite != null)
+            patientImage.sprite = currentPatient.healthySprite;
 
-public void OpenPatientRecords()
-{
-    if (dayResultPanel != null)
-        dayResultPanel.SetActive(false);
+        if (patientAnimator != null)
+            patientAnimator.SetTrigger("Cure");
 
+        yield return new WaitForSeconds(cureAnimationWaitTime);
 
-    currentRecordIndex = 0;
+        if (patientObject != null)
+            patientObject.SetActive(false);
 
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
 
-    if (patientRecordsPanel != null)
-        patientRecordsPanel.SetActive(true);
+        currentPatientIndex++;
 
+        patientAccepted = false;
+        patientIsLeaving = false;
 
-    ShowPatientRecord();
-}
+        yield return new WaitForSeconds(1f);
 
-
-// =========================================================
-// SHOW PATIENT RECORD
-// =========================================================
-
-void ShowPatientRecord()
-{
-    if (shuffledPatients == null)
-        return;
-
-
-    if (currentRecordIndex >=
-        shuffledPatients.Count)
-    {
-        FinishPatientRecords();
-
-        return;
+        ShowCurrentPatient();
     }
 
 
-    PatientData patient =
-        shuffledPatients[currentRecordIndex];
+    // =========================================================
+    // WRONG MEDICINE
+    // =========================================================
 
-
-    if (patientRecordTitle != null)
+    IEnumerator WrongMedicineSequence()
     {
-        patientRecordTitle.text =
-            "PATIENT RECORD";
+        CloseFacePopup();
+
+        patientIsLeaving = true;
+        deadPatients++;
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        if (patientDialogueText != null)
+            patientDialogueText.text = "Something... is wrong...";
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(true);
+
+        if (patientImage != null && currentPatient.deadSprite != null)
+            patientImage.sprite = currentPatient.deadSprite;
+
+        if (patientAnimator != null)
+            patientAnimator.SetTrigger("Death");
+
+        yield return new WaitForSeconds(deathAnimationWaitTime);
+
+        if (patientObject != null)
+            patientObject.SetActive(false);
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
+
+        currentPatientIndex++;
+
+        patientAccepted = false;
+        patientIsLeaving = false;
+
+        yield return new WaitForSeconds(1f);
+
+        ShowCurrentPatient();
     }
 
 
-    string result;
+    // =========================================================
+    // END DAY
+    // =========================================================
 
-
-    if (currentRecordIndex <
-        curedPatients)
+    void EndDay()
     {
-        result = "RESULT: CURED";
-    }
-    else
-    {
-        result = "RESULT: DECEASED / REJECTED";
-    }
+        timerRunning = false;
 
+        if (timerUI != null)
+            timerUI.SetActive(false);
 
-    if (patientRecordText != null)
-    {
-        patientRecordText.text =
-            "NAME: " +
-            patient.patientName +
-            "\n\n" +
+        if (patientLifeUI != null)
+            patientLifeUI.SetActive(false);
 
-            "AGE: " +
-            patient.age +
-            "\n\n" +
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
 
-            "CORRECT MEDICINE: " +
-            patient.correctMedicine +
-            "\n\n" +
+        if (patientFilePanel != null)
+            patientFilePanel.SetActive(false);
 
-            result;
+        if (patientObject != null)
+            patientObject.SetActive(false);
+
+        dayPassed = curedPatients >= minimumPatientsToCure;
+
+        ShowDailyReport();
     }
 
 
-    if (patientRecordCounter != null)
+    // =========================================================
+    // DAILY REPORT
+    // =========================================================
+
+    void ShowDailyReport()
     {
-        patientRecordCounter.text =
-            "RECORD " +
-            (currentRecordIndex + 1) +
-            " / " +
-            shuffledPatients.Count;
-    }
-}
+        if (dayResultPanel != null)
+            dayResultPanel.SetActive(true);
 
-
-// =========================================================
-// NEXT PATIENT RECORD
-// =========================================================
-
-public void NextPatientRecord()
-{
-    currentRecordIndex++;
-
-    ShowPatientRecord();
-}
-
-
-// =========================================================
-// FINISH PATIENT RECORDS
-// =========================================================
-
-void FinishPatientRecords()
-{
-    if (patientRecordsPanel != null)
-        patientRecordsPanel.SetActive(false);
-
-
-    StartSupervisorCall();
-}
-
-
-// =========================================================
-// SUPERVISOR CALL
-// =========================================================
-
-void StartSupervisorCall()
-{
-    if (supervisorPanel != null)
-        supervisorPanel.SetActive(true);
-
-
-    if (supervisorTitle != null)
-        supervisorTitle.text =
-            "SUPERVISOR";
-
-
-    if (supervisorDialogue != null)
-    {
-        if (dayPassed)
+        if (dayResultTitle != null)
         {
-            if (deadPatients == 0)
+            dayResultTitle.text = dayPassed ? "DAY 1 COMPLETE" : "DAY 1 FAILED";
+        }
+
+        if (dayResultStats != null)
+        {
+            dayResultStats.text =
+                "PATIENTS EXAMINED: " + totalPatients + "\n" +
+                "PATIENTS CURED: " + curedPatients + "\n" +
+                "PATIENTS DECEASED: " + deadPatients + "\n" +
+                "PATIENTS REJECTED: " + rejectedPatients;
+        }
+    }
+
+
+    // =========================================================
+    // OPEN PATIENT RECORDS
+    // =========================================================
+
+    public void OpenPatientRecords()
+    {
+        if (dayResultPanel != null)
+            dayResultPanel.SetActive(false);
+
+        currentRecordIndex = 0;
+
+        if (patientRecordsPanel != null)
+            patientRecordsPanel.SetActive(true);
+
+        ShowPatientRecord();
+    }
+
+
+    // =========================================================
+    // SHOW PATIENT RECORD
+    // =========================================================
+
+    void ShowPatientRecord()
+    {
+        if (shuffledPatients == null)
+            return;
+
+        if (currentRecordIndex >= shuffledPatients.Count)
+        {
+            FinishPatientRecords();
+            return;
+        }
+
+        PatientData patient = shuffledPatients[currentRecordIndex];
+
+        if (patientRecordTitle != null)
+            patientRecordTitle.text = "PATIENT RECORD";
+
+        string result;
+
+        if (currentRecordIndex < curedPatients)
+            result = "RESULT: CURED";
+        else
+            result = "RESULT: DECEASED / REJECTED";
+
+        if (patientRecordText != null)
+        {
+            patientRecordText.text =
+                "NAME: " + patient.patientName + "\n\n" +
+                "AGE: " + patient.age + "\n\n" +
+                "CORRECT MEDICINE: " + patient.correctMedicine + "\n\n" +
+                result;
+        }
+
+        if (patientRecordCounter != null)
+        {
+            patientRecordCounter.text =
+                "RECORD " +
+                (currentRecordIndex + 1) +
+                " / " +
+                shuffledPatients.Count;
+        }
+    }
+
+
+    // =========================================================
+    // NEXT PATIENT RECORD
+    // =========================================================
+
+    public void NextPatientRecord()
+    {
+        currentRecordIndex++;
+
+        ShowPatientRecord();
+    }
+
+
+    // =========================================================
+    // FINISH PATIENT RECORDS
+    // =========================================================
+
+    void FinishPatientRecords()
+    {
+        if (patientRecordsPanel != null)
+            patientRecordsPanel.SetActive(false);
+
+        StartSupervisorCall();
+    }
+
+
+    // =========================================================
+    // SUPERVISOR CALL
+    // =========================================================
+
+    void StartSupervisorCall()
+    {
+        if (supervisorPanel != null)
+            supervisorPanel.SetActive(true);
+
+        if (supervisorTitle != null)
+            supervisorTitle.text = "SUPERVISOR";
+
+        if (supervisorDialogue != null)
+        {
+            if (dayPassed)
             {
-                supervisorDialogue.text =
-                    "I've reviewed today's records, Doctor.\n\n" +
-                    "All patients survived.\n\n" +
-                    "Excellent work. Continue to Day 2.";
+                if (deadPatients == 0)
+                {
+                    supervisorDialogue.text =
+                        "I've reviewed today's records, Doctor.\n\n" +
+                        "All patients survived.\n\n" +
+                        "Excellent work. Continue to Day 2.";
+                }
+                else
+                {
+                    supervisorDialogue.text =
+                        "I've reviewed today's records, Doctor.\n\n" +
+                        curedPatients +
+                        " patients survived, but " +
+                        deadPatients +
+                        " life was lost.\n\n" +
+                        "Be more careful tomorrow.\n\n" +
+                        "You may continue to Day 2.";
+                }
             }
             else
             {
-                supervisorDialogue.text =
-                    "I've reviewed today's records, Doctor.\n\n" +
-                    curedPatients +
-                    " patients survived, but " +
-                    deadPatients +
-                    " life was lost.\n\n" +
-                    "Be more careful tomorrow.\n\n" +
-                    "You may continue to Day 2.";
+                if (deadPatients >= 2)
+                {
+                    supervisorDialogue.text =
+                        "I've reviewed today's records.\n\n" +
+                        "You killed " +
+                        deadPatients +
+                        " patients today.\n\n" +
+                        "You were entrusted with their lives, Doctor.\n\n" +
+                        "This cannot happen again.\n\n" +
+                        "Day 1 must be repeated.";
+                }
+                else
+                {
+                    supervisorDialogue.text =
+                        "I've reviewed today's records.\n\n" +
+                        "Too many patients failed to survive today's treatment.\n\n" +
+                        "You need to be more careful with your medications.\n\n" +
+                        "Day 1 must be repeated.";
+                }
+            }
+        }
+
+        if (supervisorNextButton != null)
+            supervisorNextButton.gameObject.SetActive(true);
+    }
+
+
+    // =========================================================
+    // SUPERVISOR NEXT
+    // =========================================================
+
+    public void SupervisorNext()
+    {
+        if (supervisorPanel != null)
+            supervisorPanel.SetActive(false);
+
+        ShowFinalResult();
+    }
+
+
+    // =========================================================
+    // FINAL RESULT
+    // =========================================================
+
+    void ShowFinalResult()
+    {
+        if (finalResultPanel != null)
+            finalResultPanel.SetActive(true);
+
+        if (dayPassed)
+        {
+            if (finalResultTitle != null)
+                finalResultTitle.text = "DAY 1 COMPLETE";
+
+            if (finalResultMessage != null)
+            {
+                finalResultMessage.text =
+                    "You have successfully completed Day 1.\n\n" +
+                    "Prepare for Day 2.";
+            }
+
+            if (finalResultButton != null)
+            {
+                TextMeshProUGUI buttonText =
+                    finalResultButton.GetComponentInChildren<TextMeshProUGUI>();
+
+                if (buttonText != null)
+                    buttonText.text = "CONTINUE TO DAY 2";
             }
         }
         else
         {
-            if (deadPatients >= 2)
+            if (finalResultTitle != null)
+                finalResultTitle.text = "DAY 1 FAILED";
+
+            if (finalResultMessage != null)
             {
-                supervisorDialogue.text =
-                    "I've reviewed today's records.\n\n" +
-                    "You killed " +
-                    deadPatients +
-                    " patients today.\n\n" +
-                    "You were entrusted with their lives, Doctor.\n\n" +
-                    "This cannot happen again.\n\n" +
-                    "Day 1 must be repeated.";
+                finalResultMessage.text =
+                    "Too many patients were lost.\n\n" +
+                    "You must repeat Day 1.";
             }
-            else
+
+            if (finalResultButton != null)
             {
-                supervisorDialogue.text =
-                    "I've reviewed today's records.\n\n" +
-                    "Too many patients failed to survive today's treatment.\n\n" +
-                    "You need to be more careful with your medications.\n\n" +
-                    "Day 1 must be repeated.";
+                TextMeshProUGUI buttonText =
+                    finalResultButton.GetComponentInChildren<TextMeshProUGUI>();
+
+                if (buttonText != null)
+                    buttonText.text = "RESTART DAY 1";
             }
         }
     }
 
 
-    if (supervisorNextButton != null)
+    // =========================================================
+    // FINAL RESULT BUTTON
+    // =========================================================
+
+    public void FinalResultButtonPressed()
     {
-        supervisorNextButton.gameObject.SetActive(true);
+        if (dayPassed)
+            ContinueToDay2();
+        else
+            RestartDay1();
     }
-}
 
 
-// =========================================================
-// SUPERVISOR NEXT
-// =========================================================
+    // =========================================================
+    // CONTINUE TO DAY 2
+    // =========================================================
 
-public void SupervisorNext()
-{
-    if (supervisorPanel != null)
-        supervisorPanel.SetActive(false);
-
-
-    ShowFinalResult();
-}
-
-
-// =========================================================
-// FINAL RESULT
-// =========================================================
-
-void ShowFinalResult()
-{
-    if (finalResultPanel != null)
-        finalResultPanel.SetActive(true);
-
-
-    if (dayPassed)
+    void ContinueToDay2()
     {
-        if (finalResultTitle != null)
-            finalResultTitle.text =
-                "DAY 1 COMPLETE";
+        Debug.Log("DAY 1 PASSED - CONTINUE TO DAY 2");
 
+        /*
+         * DAY 2 WILL BE CONNECTED HERE LATER.
+         *
+         * For now this only closes the result panel.
+         */
 
-        if (finalResultMessage != null)
-        {
-            finalResultMessage.text =
-                "You have successfully completed Day 1.\n\n" +
-                "Prepare for Day 2.";
-        }
+        if (finalResultPanel != null)
+            finalResultPanel.SetActive(false);
 
-
-        if (finalResultButton != null)
-        {
-            TextMeshProUGUI buttonText =
-                finalResultButton.GetComponentInChildren<TextMeshProUGUI>();
-
-            if (buttonText != null)
-                buttonText.text =
-                    "CONTINUE TO DAY 2";
-        }
+        Debug.Log("DAY 2 NOT IMPLEMENTED YET.");
     }
-    else
+
+
+    // =========================================================
+    // RESTART DAY 1
+    // =========================================================
+
+    void RestartDay1()
     {
-        if (finalResultTitle != null)
-            finalResultTitle.text =
-                "DAY 1 FAILED";
+        Debug.Log("DAY 1 FAILED - RESTARTING");
 
+        if (finalResultPanel != null)
+            finalResultPanel.SetActive(false);
 
-        if (finalResultMessage != null)
-        {
-            finalResultMessage.text =
-                "Too many patients were lost.\n\n" +
-                "You must repeat Day 1.";
-        }
-
-
-        if (finalResultButton != null)
-        {
-            TextMeshProUGUI buttonText =
-                finalResultButton.GetComponentInChildren<TextMeshProUGUI>();
-
-            if (buttonText != null)
-                buttonText.text =
-                    "RESTART DAY 1";
-        }
+        StartCoroutine(RestartDaySequence());
     }
-}
 
 
-// =========================================================
-// FINAL RESULT BUTTON
-// =========================================================
-
-public void FinalResultButtonPressed()
-{
-    if (dayPassed)
+    IEnumerator RestartDaySequence()
     {
-        ContinueToDay2();
+        yield return new WaitForSeconds(0.5f);
+
+        StartDay1();
     }
-    else
+
+
+    // =========================================================
+    // HIDE ENDING UI
+    // =========================================================
+
+    void HideEndingUI()
     {
-        RestartDay1();
+        if (dayResultPanel != null)
+            dayResultPanel.SetActive(false);
+
+        if (patientRecordsPanel != null)
+            patientRecordsPanel.SetActive(false);
+
+        if (supervisorPanel != null)
+            supervisorPanel.SetActive(false);
+
+        if (finalResultPanel != null)
+            finalResultPanel.SetActive(false);
     }
-}
-
-
-// =========================================================
-// CONTINUE TO DAY 2
-// =========================================================
-
-void ContinueToDay2()
-{
-    Debug.Log(
-        "DAY 1 PASSED - CONTINUE TO DAY 2"
-    );
-
-    /*
-     * DAY 2 WILL BE CONNECTED HERE LATER.
-     *
-     * For now this only closes the result panel.
-     */
-
-    if (finalResultPanel != null)
-        finalResultPanel.SetActive(false);
-
-    Debug.Log("DAY 2 NOT IMPLEMENTED YET.");
-}
-
-
-// =========================================================
-// RESTART DAY 1
-// =========================================================
-
-void RestartDay1()
-{
-    Debug.Log(
-        "DAY 1 FAILED - RESTARTING"
-    );
-
-
-    if (finalResultPanel != null)
-        finalResultPanel.SetActive(false);
-
-
-    StartCoroutine(
-        RestartDaySequence()
-    );
-}
-
-
-IEnumerator RestartDaySequence()
-{
-    yield return new WaitForSeconds(0.5f);
-
-
-    StartDay1();
-}
-
-
-// =========================================================
-// HIDE ENDING UI
-// =========================================================
-
-void HideEndingUI()
-{
-    if (dayResultPanel != null)
-        dayResultPanel.SetActive(false);
-
-
-    if (patientRecordsPanel != null)
-        patientRecordsPanel.SetActive(false);
-
-
-    if (supervisorPanel != null)
-        supervisorPanel.SetActive(false);
-
-
-    if (finalResultPanel != null)
-        finalResultPanel.SetActive(false);
-}
-
 }

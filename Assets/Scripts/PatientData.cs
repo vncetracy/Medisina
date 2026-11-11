@@ -26,7 +26,11 @@ public class PatientData
 
     public Sprite deadSprite;
 
-    public Sprite faceSprite;   // NEW: close-up face shown in the popup
+    public Sprite angrySprite;      // NEW: shown when a fake patient is caught
+
+    public Sprite faceSprite;       // close-up face shown in the popup
+
+    public Sprite fakeFaceSprite;   // NEW: face popup version for fake patients
 
     [Header("Patient Type")]
     public bool isFake;

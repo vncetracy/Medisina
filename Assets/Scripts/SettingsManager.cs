@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -7,17 +8,22 @@ public class SettingsManager : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject settingsPanel;
-    public GameObject mainMenuPanel;        // your existing MainMenuPanel
-    public GameObject confirmMainMenuPanel; // small "are you sure?" popup
+    public GameObject mainMenuPanel;
+    public GameObject confirmMainMenuPanel;
 
     [Header("Volume Slider (min 0, max 1)")]
-    public Slider masterSlider;             // the ONE slider for all sound
+    public Slider masterSlider;
 
     [Header("Buttons")]
     public GameObject resumeButton;
-    public GameObject mainMenuButton;       // hidden on the title screen
+    public GameObject mainMenuButton;
+
+    [Header("Pull-up Animation")]
+    [Tooltip("Seconds to let the open animation play before pausing. Frames / Samples (e.g. 15 / 60 = 0.25)")]
+    public float pauseAfterSeconds = 0.25f;
 
     bool isOpen;
+    Coroutine pauseRoutine;
 
     void Start()
     {
@@ -38,6 +44,8 @@ public class SettingsManager : MonoBehaviour
     // Hook this to the gear button
     public void Open()
     {
+        if (isOpen) return;
+
         isOpen = true;
         settingsPanel.SetActive(true);
 
@@ -47,12 +55,29 @@ public class SettingsManager : MonoBehaviour
         resumeButton.SetActive(true);
         mainMenuButton.SetActive(!onTitle);
 
+        // Let the animation finish first, then freeze the game.
+        if (pauseRoutine != null) StopCoroutine(pauseRoutine);
+        pauseRoutine = StartCoroutine(PauseAfterAnimation());
+    }
+
+    IEnumerator PauseAfterAnimation()
+    {
+        yield return new WaitForSecondsRealtime(pauseAfterSeconds);
         Time.timeScale = 0f;
+        pauseRoutine = null;
     }
 
     public void Resume()
     {
         isOpen = false;
+
+        // Cancel a pending pause if the panel is closed mid-animation.
+        if (pauseRoutine != null)
+        {
+            StopCoroutine(pauseRoutine);
+            pauseRoutine = null;
+        }
+
         settingsPanel.SetActive(false);
         confirmMainMenuPanel.SetActive(false);
         Time.timeScale = 1f;
@@ -64,6 +89,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ConfirmMainMenu()
     {
+        if (pauseRoutine != null) StopCoroutine(pauseRoutine);
         Time.timeScale = 1f; // never leave the game frozen
         PlayerPrefs.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
