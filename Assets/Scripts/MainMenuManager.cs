@@ -10,6 +10,9 @@ public class MainMenuManager : MonoBehaviour
     [Header("Managers")]
     public Day1Manager day1Manager;
 
+    [Tooltip("Optional. If assigned, the guided tutorial plays with the first patient (first time only).")]
+    public TutorialManager tutorialManager;
+
     void Start()
     {
         mainMenuPanel.SetActive(true);
@@ -26,6 +29,10 @@ public class MainMenuManager : MonoBehaviour
         gameplayContainer.SetActive(true);
 
         dayUI.SetActive(true);
+
+        // The tutorial starts by itself when the first patient arrives.
+        if (tutorialManager != null && !tutorialManager.IsCompleted())
+            tutorialManager.Arm();
 
         day1Manager.StartDay1();
     }

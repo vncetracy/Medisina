@@ -186,6 +186,11 @@ public TextMeshProUGUI patientAllergyText;
 
 public MixingManager mixingManager;
 
+[Header("Tutorial")]
+public TutorialManager tutorialManager;
+public string tutorialMedicineName = "Paracetamol";
+public bool timerPaused = false;
+
 
 // =========================================================
 // START
@@ -269,6 +274,10 @@ IEnumerator StartDaySequence()
     if (dayText != null)
         dayText.text = "DAY 1";
 
+    if (patientCounterText != null)
+        patientCounterText.text =
+            "PATIENT 1 / " + totalPatients;
+
 
     yield return new WaitForSeconds(2f);
 
@@ -290,7 +299,7 @@ IEnumerator StartDaySequence()
 
 void Update()
 {
-    if (!timerRunning)
+    if (!timerRunning || timerPaused)
         return;
 
     currentTime -= Time.deltaTime;
@@ -314,7 +323,7 @@ void UpdateTimerText()
 
 public void PenalizeTime(float seconds)
 {
-    if (!timerRunning || patientIsLeaving || seconds <= 0f)
+    if (!timerRunning || timerPaused || patientIsLeaving || seconds <= 0f)
         return;
 
     // Show only what was really deducted (never more than is left).
@@ -388,6 +397,24 @@ void ShufflePatients()
 
         shuffledPatients[randomIndex] =
             temp;
+    }
+
+    if (tutorialManager != null && tutorialManager.IsArmed)
+    {
+        int idx = shuffledPatients.FindIndex(
+            p => p != null && p.correctMedicine == tutorialMedicineName);
+
+        if (idx > 0)
+        {
+            PatientData first = shuffledPatients[0];
+            shuffledPatients[0] = shuffledPatients[idx];
+            shuffledPatients[idx] = first;
+        }
+        else if (idx < 0)
+        {
+            Debug.LogWarning("Tutorial: no patient needs '" +
+                tutorialMedicineName + "'. Check the name.");
+        }
     }
 }
 
@@ -495,6 +522,10 @@ IEnumerator BringPatient()
             " / " +
             totalPatients;
     }
+
+    if (tutorialManager != null)
+        tutorialManager.OnPatientArrived();
+
 }
 
 
