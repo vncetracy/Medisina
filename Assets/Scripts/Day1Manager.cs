@@ -32,6 +32,8 @@ public class Day1Manager : MonoBehaviour
     public GameObject dayResultPanel;
     public TextMeshProUGUI dayResultTitle;
     public TextMeshProUGUI dayResultStats;
+
+    [Tooltip("Correct decisions needed to pass the day. A correct decision is curing a real patient OR rejecting a fake one.")]
     public int minimumPatientsToCure = 2;
 
 
@@ -77,9 +79,21 @@ public class Day1Manager : MonoBehaviour
     // PATIENT RESULT COUNTERS
     // =========================================================
 
-    private int curedPatients = 0;
-    private int deadPatients = 0;
-    private int rejectedPatients = 0;
+    private enum PatientResult
+    {
+        None,
+        Cured,          // real patient, correct medicine           (correct)
+        CaughtFake,     // fake patient, rejected                   (correct)
+        Dead,           // real patient: wrong medicine, time up, or wrongly rejected (mistake)
+        FooledByFake    // fake patient was accepted / given medicine (mistake)
+    }
+
+    private List<PatientResult> patientResults = new List<PatientResult>();
+
+    private int curedPatients = 0;      // real patients cured
+    private int deadPatients = 0;       // real patients who died (incl. wrongly rejected)
+    private int caughtFakes = 0;        // fake patients correctly rejected
+    private int fooledByFakes = 0;      // fake patients that tricked you
 
 
     // =========================================================
@@ -105,6 +119,8 @@ public class Day1Manager : MonoBehaviour
     public Animator patientAnimator;
     public float cureAnimationWaitTime = 2f;
     public float deathAnimationWaitTime = 2f;
+    public float fooledWaitTime = 3f;
+    public float fakeRejectedAnimationWaitTime = 2f;
 
 
     // =========================================================
@@ -191,7 +207,13 @@ public class Day1Manager : MonoBehaviour
         // Reset counters
         curedPatients = 0;
         deadPatients = 0;
-        rejectedPatients = 0;
+        caughtFakes = 0;
+        fooledByFakes = 0;
+
+        // Reset per-patient results
+        patientResults = new List<PatientResult>();
+        for (int i = 0; i < shuffledPatients.Count; i++)
+            patientResults.Add(PatientResult.None);
 
         // Reset record index
         currentRecordIndex = 0;
@@ -306,7 +328,46 @@ public class Day1Manager : MonoBehaviour
             mixingManager.RemoveHeldMedicine();
         }
 
-        StartCoroutine(WrongMedicineSequence());
+        // A fake patient isn't actually sick, so running out of time on one
+        // means they fooled you, not that they died.
+        if (IsCurrentPatientFake())
+        {
+            StartCoroutine(FooledByFakeSequence("Hehe... you wasted your time, doctor. >:D"));
+        }
+        else
+        {
+            StartCoroutine(WrongMedicineSequence());
+        }
+    }
+
+
+    // =========================================================
+    // HELPERS
+    // =========================================================
+
+    bool IsCurrentPatientFake()
+    {
+        if (shuffledPatients == null)
+            return false;
+
+        if (currentPatientIndex < 0 ||
+            currentPatientIndex >= shuffledPatients.Count)
+            return false;
+
+        PatientData p = shuffledPatients[currentPatientIndex];
+
+        return p != null && p.isFake;
+    }
+
+
+    void SetCurrentResult(PatientResult result)
+    {
+        if (patientResults != null &&
+            currentPatientIndex >= 0 &&
+            currentPatientIndex < patientResults.Count)
+        {
+            patientResults[currentPatientIndex] = result;
+        }
     }
 
 
@@ -567,7 +628,6 @@ public class Day1Manager : MonoBehaviour
         CloseFacePopup();
 
         patientIsLeaving = true;
-        rejectedPatients++;
 
         PatientData currentPatient = shuffledPatients[currentPatientIndex];
 
@@ -577,6 +637,9 @@ public class Day1Manager : MonoBehaviour
         if (currentPatient.isFake)
         {
             // Correct rejection: the faker is caught.
+            caughtFakes++;
+            SetCurrentResult(PatientResult.CaughtFake);
+
             if (patientImage != null && currentPatient.angrySprite != null)
                 patientImage.sprite = currentPatient.angrySprite;
 
@@ -585,11 +648,19 @@ public class Day1Manager : MonoBehaviour
 
             if (patientDialogueUI != null)
                 patientDialogueUI.SetActive(true);
+
+            // NEW: Play fake patient's angry walking animation.
+            if (patientAnimator != null)
+                patientAnimator.SetTrigger("FakeRejected");
+
+            yield return new WaitForSeconds(fakeRejectedAnimationWaitTime);
         }
         else
         {
             // Wrong rejection: a genuinely sick patient was turned away.
-            // Sprite becomes the dead sprite, no dialogue.
+            deadPatients++;
+            SetCurrentResult(PatientResult.Dead);
+
             if (patientDialogueUI != null)
                 patientDialogueUI.SetActive(false);
 
@@ -597,10 +668,10 @@ public class Day1Manager : MonoBehaviour
                 patientImage.sprite = currentPatient.deadSprite;
 
             if (patientAnimator != null)
-                patientAnimator.SetTrigger("Death"); // remove this line if you only want the sprite swap
-        }
+                patientAnimator.SetTrigger("Death");
 
-        yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(deathAnimationWaitTime);
+        }
 
         if (patientObject != null)
             patientObject.SetActive(false);
@@ -656,6 +727,28 @@ public class Day1Manager : MonoBehaviour
         Debug.Log("Patient needs: " + currentPatient.correctMedicine);
         Debug.Log("Player gave: " + givenMedicine);
 
+        // ---- FAKE PATIENT: any medicine given is a mistake ----
+        if (currentPatient.isFake)
+        {
+            Debug.Log("FAKE PATIENT FOOLED THE PLAYER!");
+
+            mixingManager.RemoveHeldMedicine();
+
+            timerRunning = false;
+
+            if (timerUI != null)
+                timerUI.SetActive(false);
+
+            if (patientLifeUI != null)
+                patientLifeUI.SetActive(false);
+
+            StartCoroutine(FooledByFakeSequence(
+                "haha I got you! this medicine will go to bad use >:D"));
+
+            return;
+        }
+
+        // ---- REAL PATIENT ----
         if (givenMedicine == currentPatient.correctMedicine)
         {
             Debug.Log("CORRECT MEDICINE!");
@@ -701,6 +794,7 @@ public class Day1Manager : MonoBehaviour
 
         patientIsLeaving = true;
         curedPatients++;
+        SetCurrentResult(PatientResult.Cured);
 
         PatientData currentPatient = shuffledPatients[currentPatientIndex];
 
@@ -745,6 +839,7 @@ public class Day1Manager : MonoBehaviour
 
         patientIsLeaving = true;
         deadPatients++;
+        SetCurrentResult(PatientResult.Dead);
 
         PatientData currentPatient = shuffledPatients[currentPatientIndex];
 
@@ -761,6 +856,48 @@ public class Day1Manager : MonoBehaviour
             patientAnimator.SetTrigger("Death");
 
         yield return new WaitForSeconds(deathAnimationWaitTime);
+
+        if (patientObject != null)
+            patientObject.SetActive(false);
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(false);
+
+        currentPatientIndex++;
+
+        patientAccepted = false;
+        patientIsLeaving = false;
+
+        yield return new WaitForSeconds(1f);
+
+        ShowCurrentPatient();
+    }
+
+
+    // =========================================================
+    // FOOLED BY FAKE PATIENT
+    // =========================================================
+
+    IEnumerator FooledByFakeSequence(string line)
+    {
+        CloseFacePopup();
+
+        patientIsLeaving = true;
+        fooledByFakes++;
+        SetCurrentResult(PatientResult.FooledByFake);
+
+        PatientData currentPatient = shuffledPatients[currentPatientIndex];
+
+        if (patientDialogueText != null)
+            patientDialogueText.text = line;
+
+        if (patientDialogueUI != null)
+            patientDialogueUI.SetActive(true);
+
+        if (patientImage != null && currentPatient.grinningSprite != null)
+            patientImage.sprite = currentPatient.grinningSprite;
+
+        yield return new WaitForSeconds(fooledWaitTime);
 
         if (patientObject != null)
             patientObject.SetActive(false);
@@ -802,7 +939,10 @@ public class Day1Manager : MonoBehaviour
         if (patientObject != null)
             patientObject.SetActive(false);
 
-        dayPassed = curedPatients >= minimumPatientsToCure;
+        // Correct decisions = cured a real patient OR rejected a fake one.
+        int correctDecisions = curedPatients + caughtFakes;
+
+        dayPassed = correctDecisions >= minimumPatientsToCure;
 
         ShowDailyReport();
     }
@@ -828,7 +968,8 @@ public class Day1Manager : MonoBehaviour
                 "PATIENTS EXAMINED: " + totalPatients + "\n" +
                 "PATIENTS CURED: " + curedPatients + "\n" +
                 "PATIENTS DECEASED: " + deadPatients + "\n" +
-                "PATIENTS REJECTED: " + rejectedPatients;
+                "FAKES REJECTED: " + caughtFakes + "\n" +
+                "FOOLED BY FAKES: " + fooledByFakes;
         }
     }
 
@@ -871,19 +1012,47 @@ public class Day1Manager : MonoBehaviour
         if (patientRecordTitle != null)
             patientRecordTitle.text = "PATIENT RECORD";
 
+        PatientResult recordResult = PatientResult.None;
+
+        if (patientResults != null && currentRecordIndex < patientResults.Count)
+            recordResult = patientResults[currentRecordIndex];
+
         string result;
 
-        if (currentRecordIndex < curedPatients)
-            result = "RESULT: CURED";
-        else
-            result = "RESULT: DECEASED / REJECTED";
+        switch (recordResult)
+        {
+            case PatientResult.Cured:
+                result = "RESULT: CURED";
+                break;
+
+            case PatientResult.CaughtFake:
+                result = "RESULT: FAKE PATIENT - REJECTED";
+                break;
+
+            case PatientResult.Dead:
+                result = "RESULT: DECEASED";
+                break;
+
+            case PatientResult.FooledByFake:
+                result = "RESULT: FAKE PATIENT - FOOLED YOU";
+                break;
+
+            default:
+                result = "RESULT: UNKNOWN";
+                break;
+        }
+
+        // A fake patient has no real illness to treat, so don't show a "correct medicine".
+        string medicineLine = patient.isFake
+            ? "CORRECT MEDICINE: NONE (FAKE PATIENT)"
+            : "CORRECT MEDICINE: " + patient.correctMedicine;
 
         if (patientRecordText != null)
         {
             patientRecordText.text =
                 "NAME: " + patient.patientName + "\n\n" +
                 "AGE: " + patient.age + "\n\n" +
-                "CORRECT MEDICINE: " + patient.correctMedicine + "\n\n" +
+                medicineLine + "\n\n" +
                 result;
         }
 
@@ -927,6 +1096,28 @@ public class Day1Manager : MonoBehaviour
     // SUPERVISOR CALL
     // =========================================================
 
+    // Describes the mistakes made today, e.g.
+    // "1 life was lost and 1 impostor fooled you"
+    string BuildMistakeSummary()
+    {
+        List<string> parts = new List<string>();
+
+        if (deadPatients > 0)
+        {
+            parts.Add(deadPatients +
+                (deadPatients == 1 ? " life was lost" : " lives were lost"));
+        }
+
+        if (fooledByFakes > 0)
+        {
+            parts.Add(fooledByFakes +
+                (fooledByFakes == 1 ? " impostor fooled you" : " impostors fooled you"));
+        }
+
+        return string.Join(" and ", parts);
+    }
+
+
     void StartSupervisorCall()
     {
         if (supervisorPanel != null)
@@ -937,23 +1128,36 @@ public class Day1Manager : MonoBehaviour
 
         if (supervisorDialogue != null)
         {
+            int correctDecisions = curedPatients + caughtFakes;
+            int mistakes = deadPatients + fooledByFakes;
+
             if (dayPassed)
             {
-                if (deadPatients == 0)
+                if (mistakes == 0)
                 {
-                    supervisorDialogue.text =
-                        "I've reviewed today's records, Doctor.\n\n" +
-                        "All patients survived.\n\n" +
+                    string text = "I've reviewed today's records, Doctor.\n\n";
+
+                    if (caughtFakes > 0)
+                    {
+                        text +=
+                            "You even caught " + caughtFakes +
+                            (caughtFakes == 1 ? " impostor" : " impostors") +
+                            " trying to fool us.\n\n";
+                    }
+
+                    text +=
+                        "All patients were handled correctly.\n\n" +
                         "Excellent work. Continue to Day 2.";
+
+                    supervisorDialogue.text = text;
                 }
                 else
                 {
                     supervisorDialogue.text =
                         "I've reviewed today's records, Doctor.\n\n" +
-                        curedPatients +
-                        " patients survived, but " +
-                        deadPatients +
-                        " life was lost.\n\n" +
+                        correctDecisions + " of " + totalPatients +
+                        " patients were handled correctly, but " +
+                        BuildMistakeSummary() + ".\n\n" +
                         "Be more careful tomorrow.\n\n" +
                         "You may continue to Day 2.";
                 }
@@ -975,8 +1179,9 @@ public class Day1Manager : MonoBehaviour
                 {
                     supervisorDialogue.text =
                         "I've reviewed today's records.\n\n" +
-                        "Too many patients failed to survive today's treatment.\n\n" +
-                        "You need to be more careful with your medications.\n\n" +
+                        "Too many mistakes were made today: " +
+                        BuildMistakeSummary() + ".\n\n" +
+                        "You need to be more careful when examining patients and giving medication.\n\n" +
                         "Day 1 must be repeated.";
                 }
             }
@@ -1038,7 +1243,7 @@ public class Day1Manager : MonoBehaviour
             if (finalResultMessage != null)
             {
                 finalResultMessage.text =
-                    "Too many patients were lost.\n\n" +
+                    "Too many mistakes were made.\n\n" +
                     "You must repeat Day 1.";
             }
 
